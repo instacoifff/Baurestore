@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,20 +10,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex flex-col items-center">
-                <div className="flex gap-0.5">
-                  <div className="w-1 h-5 bg-background rounded-full" />
-                  <div className="w-1 h-6 bg-background rounded-full" />
-                  <div className="w-1 h-6 bg-background rounded-full" />
-                  <div className="w-1 h-5 bg-background rounded-full" />
-                </div>
-                <div className="w-7 h-0.5 bg-background mt-1" />
-              </div>
-              <div>
-                <span className="font-display text-xl font-bold text-background">BauRestore</span>
-              </div>
-            </div>
+            <Logo inverted className="mb-4" />
             <p className="text-background/70 max-w-sm mb-4">
               Ingenieurdienstleistungen für Bauschäden & Sanierungsmanagement. 
               Alles aus einer Hand – von der Schadenfeststellung bis zur Wiederherstellung.

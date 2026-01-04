@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "@/components/Logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,22 +19,8 @@ const Header = () => {
       <div className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
-            <div className="flex flex-col items-center">
-              <div className="flex gap-0.5">
-                <div className="w-1 h-6 bg-primary rounded-full" />
-                <div className="w-1 h-8 bg-primary rounded-full" />
-                <div className="w-1 h-8 bg-primary rounded-full" />
-                <div className="w-1 h-6 bg-primary rounded-full" />
-              </div>
-              <div className="w-8 h-0.5 bg-primary mt-1" />
-            </div>
-            <div>
-              <span className="font-display text-xl font-bold text-primary">BauRestore</span>
-              <p className="text-xs text-muted-foreground hidden sm:block">
-                Ingenieurdienstleistungen
-              </p>
-            </div>
+          <a href="#">
+            <Logo />
           </a>
 
           {/* Desktop Navigation */}

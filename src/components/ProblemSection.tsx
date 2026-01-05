@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Droplets, Bug, HelpCircle, Users, CircleDollarSign } from "lucide-react";
+import { Droplets, Bug, HelpCircle, Users, CircleDollarSign, Clock } from "lucide-react";
 
 const ProblemSection = () => {
   const problems = [
@@ -27,6 +27,11 @@ const ProblemSection = () => {
       icon: CircleDollarSign,
       title: "Versteckte Kosten",
       description: "Ungeplante Mehrkosten durch mangelhafte Planung und unerwartete Schäden.",
+    },
+    {
+      icon: Clock,
+      title: "Zeitverzögerungen",
+      description: "Lange Wartezeiten und Verzögerungen verzögern die Sanierung und erhöhen die Kosten.",
     },
   ];
 

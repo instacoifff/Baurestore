@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import TrustBar from "@/components/TrustBar";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -7,6 +8,7 @@ import ProcessSection from "@/components/ProcessSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import FloatingCTA from "@/components/FloatingCTA";
 
 const Index = () => {
   return (
@@ -14,6 +16,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <TrustBar />
         <ProblemSection />
         <SolutionSection />
         <ServicesSection />
@@ -22,6 +25,7 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
+      <FloatingCTA />
     </div>
   );
 };

@@ -59,9 +59,6 @@ const ProcessSection = () => {
 
         {/* Process Steps */}
         <div className="relative">
-          {/* Connecting Line (desktop) */}
-          <div className="hidden lg:block absolute top-28 left-0 right-0 h-0.5 bg-border" />
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
             {steps.map((step, index) => (
               <motion.div
@@ -78,7 +75,7 @@ const ProcessSection = () => {
                 </div>
 
                 {/* Step Number */}
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3 relative z-10">
                   Schritt {step.number}
                 </span>
 

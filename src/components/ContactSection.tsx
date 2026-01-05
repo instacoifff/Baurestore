@@ -1,25 +1,50 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [images, setImages] = useState<(File & { preview: string })[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Clean up object URLs to avoid memory leaks
+  useEffect(() => {
+    return () => {
+      images.forEach(file => URL.revokeObjectURL(file.preview));
+    };
+  }, [images]);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const fileList = Array.from(e.target.files).map(file =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file)
+        })
+      );
+      setImages((prev) => [...prev, ...fileList]);
+    }
+  };
+
+  const removeImage = (index: number) => {
+    setImages((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     setIsSubmitting(false);
     setIsSubmitted(true);
+    setImages([]); // Clear images after submission
     toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
   };
 
@@ -62,7 +87,7 @@ const ContactSection = () => {
               Professionelle Schadensanalyse anfragen
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Beschreiben Sie Ihr Anliegen und wir melden uns zeitnah bei Ihnen 
+              Beschreiben Sie Ihr Anliegen und wir melden uns zeitnah bei Ihnen
               für eine erste Einschätzung.
             </p>
 
@@ -79,7 +104,7 @@ const ContactSection = () => {
                   Vielen Dank für Ihre Anfrage!
                 </h3>
                 <p className="text-muted-foreground">
-                  Wir haben Ihre Nachricht erhalten und werden uns 
+                  Wir haben Ihre Nachricht erhalten und werden uns
                   schnellstmöglich bei Ihnen melden.
                 </p>
               </motion.div>
@@ -145,7 +170,7 @@ const ContactSection = () => {
                   </Select>
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-4">
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                     Ihre Nachricht
                   </label>
@@ -156,6 +181,61 @@ const ContactSection = () => {
                     rows={4}
                     className="bg-background resize-none"
                   />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Bilder vom Schaden (Optional)
+                  </label>
+                  <div
+                    className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-border border-dashed rounded-xl hover:border-primary/50 transition-colors cursor-pointer group bg-background"
+                    onClick={() => fileInputRef.current?.click()}
+                  >
+                    <div className="space-y-1 text-center">
+                      <Upload className="mx-auto h-12 w-12 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <div className="flex text-sm text-muted-foreground">
+                        <span className="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
+                          Bilder hochladen
+                        </span>
+                        <p className="pl-1">oder herüberziehen</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">PNG, JPG, GIF bis zu 10MB</p>
+                    </div>
+                    <input
+                      id="image-upload"
+                      ref={fileInputRef}
+                      name="image-upload"
+                      type="file"
+                      className="sr-only"
+                      multiple
+                      accept="image/*"
+                      onChange={handleImageChange}
+                    />
+                  </div>
+
+                  {images.length > 0 && (
+                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-4">
+                      {images.map((file, index) => (
+                        <div key={index} className="relative group aspect-square rounded-lg overflow-hidden border border-border">
+                          <img
+                            src={file.preview}
+                            alt={`Preview ${index}`}
+                            className="w-full h-full object-cover"
+                          />
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              removeImage(index);
+                            }}
+                            className="absolute top-1 right-1 p-1 bg-destructive text-destructive-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <Button variant="cta" size="lg" className="w-full" type="submit" disabled={isSubmitting}>

@@ -141,10 +141,10 @@ const ProjectsSection = () => {
             </div>
 
             <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
-                <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-none sm:rounded-3xl">
+                <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-none sm:rounded-3xl max-h-[95vh] md:max-h-[90vh] flex flex-col">
                     {selectedProject && (
-                        <div className="flex flex-col md:flex-row h-full">
-                            <div className="w-full md:w-1/2 relative bg-muted">
+                        <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
+                            <div className="w-full md:w-1/2 relative bg-muted flex-shrink-0">
                                 <img
                                     src={selectedProject.image}
                                     alt={selectedProject.title}
@@ -157,13 +157,13 @@ const ProjectsSection = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col">
+                            <div className="w-full md:w-1/2 p-6 md:p-8 lg:p-10 flex flex-col overflow-y-auto">
                                 <div className="flex items-center gap-2 text-primary font-medium text-sm mb-4">
                                     <MapPin className="w-4 h-4" />
                                     {selectedProject.location}
                                 </div>
 
-                                <DialogTitle className="text-3xl font-display font-bold mb-6 text-foreground">
+                                <DialogTitle className="text-2xl md:text-3xl font-display font-bold mb-6 text-foreground">
                                     {selectedProject.title}
                                 </DialogTitle>
 
@@ -220,7 +220,7 @@ const ProjectsSection = () => {
                                     </div>
                                 </div>
 
-                                <div className="mt-10">
+                                <div className="mt-6 md:mt-10 pt-4 border-t border-border">
                                     <button
                                         onClick={() => setSelectedProject(null)}
                                         className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary/90 transition-colors shadow-elevation-md"

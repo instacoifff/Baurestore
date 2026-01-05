@@ -15,6 +15,45 @@ const Header = () => {
     { name: "Kontakt", href: "#contact" },
   ];
 
+  // Smooth scroll function with optimized speed
+  // Duration: 600ms - Fast and responsive, feels snappy without being jarring
+  const smoothScrollTo = (targetId: string, duration: number = 600) => {
+    const targetElement = document.querySelector(targetId);
+    if (!targetElement) return;
+
+    const headerHeight = 80; // Account for fixed header
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime: number | null = null;
+
+    // Ease-out cubic for smooth deceleration (feels natural)
+    const easeOutCubic = (t: number): number => {
+      return 1 - Math.pow(1 - t, 3);
+    };
+
+    const animation = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeOutCubic(progress);
+
+      window.scrollTo(0, startPosition + distance * ease);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    smoothScrollTo(href, 600); // 600ms - Fast, responsive scroll speed
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
       <div className="section-container">
@@ -30,7 +69,8 @@ const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               >
                 {link.name}
               </a>
@@ -69,8 +109,8 @@ const Header = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="block px-4 py-2 text-foreground hover:bg-secondary rounded-md transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="block px-4 py-2 text-foreground hover:bg-secondary rounded-md transition-colors cursor-pointer"
                   >
                     {link.name}
                   </a>

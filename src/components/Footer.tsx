@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="bg-foreground text-background">
+    <footer className="bg-foreground text-background">
       <div className="section-container py-12 md:py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
@@ -90,12 +90,9 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/60 text-sm text-center md:text-left">
+          <div className="flex justify-center items-center">
+            <p className="text-background/60 text-sm text-center">
               © {currentYear} BauRestore. Alle Rechte vorbehalten.
-            </p>
-            <p className="text-background/60 text-sm">
-              Ingenieurdienstleistungen für Bauschäden & Sanierungsmanagement
             </p>
           </div>
         </div>

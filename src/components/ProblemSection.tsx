@@ -59,8 +59,8 @@ const ProblemSection = () => {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="card-engineering group"
             >
-              <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center mb-4 group-hover:bg-destructive/20 transition-colors">
-                <problem.icon className="w-6 h-6 text-destructive" />
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <problem.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-2">
                 {problem.title}

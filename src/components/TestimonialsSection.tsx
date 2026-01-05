@@ -99,32 +99,21 @@ const TestimonialsSection = () => {
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
-              className="w-[350px] md:w-[450px] p-8 rounded-2xl bg-card border border-border shadow-card hover:shadow-lg transition-all group flex flex-col justify-between whitespace-normal"
+              className="w-[350px] md:w-[450px] p-8 rounded-2xl bg-card border border-border shadow-card hover:shadow-lg transition-all group flex flex-col justify-between whitespace-normal relative"
             >
-              <div>
-                <div className="absolute top-6 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Quote className="w-12 h-12 text-primary" />
-                </div>
-
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-
-                <p className="text-muted-foreground mb-6 italic leading-relaxed">
-                  "{testimonial.content}"
-                </p>
+              <div className="absolute top-6 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Quote className="w-12 h-12 text-primary" />
               </div>
 
-              <div className="flex items-center gap-4 mt-auto">
+              {/* Person Info at Top */}
+              <div className="flex items-center gap-4 mb-6">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-primary/20"
+                  className="w-16 h-16 rounded-full object-cover border-2 border-primary/20 flex-shrink-0"
                 />
-                <div>
-                  <p className="font-display font-semibold text-foreground">
+                <div className="flex-1 min-w-0">
+                  <p className="font-display font-semibold text-foreground text-lg">
                     {testimonial.name}
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -132,6 +121,18 @@ const TestimonialsSection = () => {
                   </p>
                 </div>
               </div>
+
+              {/* Rating */}
+              <div className="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                ))}
+              </div>
+
+              {/* Testimonial Content */}
+              <p className="text-muted-foreground italic leading-relaxed">
+                "{testimonial.content}"
+              </p>
             </div>
           ))}
         </motion.div>

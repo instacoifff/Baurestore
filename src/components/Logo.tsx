@@ -9,7 +9,7 @@ interface LogoProps {
 
 const Logo = ({ className = "", inverted = false }: LogoProps) => {
   return (
-    <div className={`flex items-center ${className}`}>
+    <div className={`flex items-center ${className || ""}`}>
       <img 
         src={inverted ? logoWhiteImage : logoImage} 
         alt="BauRestore Logo" 

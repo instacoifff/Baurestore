@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Logo className="mb-4 [&_img]:h-16" inverted />
+            <Logo className="mb-4 [&>img]:!h-16" inverted />
             <p className="text-background/70 max-w-sm mb-4">
               Ingenieurdienstleistungen für Bauschäden & Sanierungsmanagement. 
               Alles aus einer Hand – von der Schadenfeststellung bis zur Wiederherstellung.

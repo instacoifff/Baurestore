@@ -84,6 +84,13 @@ const SolutionSection = () => {
                   <p className="text-4xl font-bold text-primary mb-2">24/7</p>
                   <p className="text-sm text-muted-foreground">Reaktionszeit</p>
                 </div>
+                <div className="bg-[#f0f9ff] rounded-[3rem] p-10 flex flex-col justify-center relative overflow-hidden">
+                  <span className="text-6xl font-bold text-[#00adef] leading-none mb-3">DE</span>
+                  <span className="text-xl text-[#5a6b81] font-medium">Deutschland-weit</span>
+                  <div className="absolute right-10 top-1/2 -translate-y-1/2">
+                    <div className="w-4 h-4 rounded-full bg-[#4ade80]"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 
 const SolutionSection = () => {
   const solutions = [
-    "Eine Anlaufstelle für Ihr gesamtes Sanierungsprojekt",
-    "Von der Schadensdiagnose bis zur vollständigen Wiederherstellung",
-    "Unabhängige Ingenieur-Expertise ohne Interessenkonflikte",
-    "Strukturierter, transparenter Prozess mit klarer Dokumentation",
-    "Kostenübersicht und Terminplanung von Anfang an",
+    "Eine zentrale Anlaufstelle für Ihr gesamtes Sanierungsprojekt Von der Ursachenanalyse und präzisen Leckortung bis zur vollständigen Wiederherstellung.",
+    "Ingenieur-Know-how für objektive und fachgerechte Lösungen Unabhängig, transparent und ausschließlich auf Ihren Werterhalt ausgerichtet.",
+    "Strukturierter Prozess mit klarer Dokumentation Jeder Schritt nachvollziehbar – für maximale Sicherheit und Vertrauen.",
+    "Verbindliche Kosten- und Terminplanung Sicherheit für eine effiziente und wirtschaftliche Umsetzung.",
   ];
 
   return (
@@ -32,8 +31,9 @@ const SolutionSection = () => {
             </h2>
             
             <p className="text-muted-foreground text-lg mb-8">
-              BauRestore vereint Ingenieur-Know-how mit strukturiertem Projektmanagement. 
-              Wir analysieren, planen und koordinieren – Sie behalten die Übersicht.
+              BauRestore steht für Fachexpertise und strukturiertes Projektmanagement. Wir
+              analysieren, entwickeln, koordinieren und dokumentieren – damit Sie jederzeit den
+              Überblick behalten und sich auf eine nachhaltige Lösung verlassen können.
             </p>
 
             <ul className="space-y-4 mb-8">
@@ -71,22 +71,18 @@ const SolutionSection = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="bg-primary rounded-2xl p-6 text-primary-foreground">
-                  <p className="text-4xl font-bold mb-2">15+</p>
-                  <p className="text-sm opacity-90">Jahre Erfahrung</p>
+                  <p className="text-4xl font-bold mb-2">100 %</p>
+                  <p className="text-sm opacity-90">Fachexpertise</p>
                 </div>
                 <div className="bg-secondary rounded-2xl p-6">
-                  <p className="text-4xl font-bold text-foreground mb-2">100%</p>
-                  <p className="text-sm text-muted-foreground">Transparente Prozesse</p>
+                  <p className="text-4xl font-bold text-foreground mb-2">+10</p>
+                  <p className="text-sm text-muted-foreground">Jahre Erfahrung</p>
                 </div>
               </div>
               <div className="space-y-4 pt-8">
                 <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
-                  <p className="text-4xl font-bold text-primary mb-2">1</p>
-                  <p className="text-sm text-muted-foreground">Ansprechpartner</p>
-                </div>
-                <div className="bg-accent/10 rounded-2xl p-6">
-                  <p className="text-4xl font-bold text-accent mb-2">DE</p>
-                  <p className="text-sm text-muted-foreground">Deutschland-weit</p>
+                  <p className="text-4xl font-bold text-primary mb-2">24/7</p>
+                  <p className="text-sm text-muted-foreground">Reaktionszeit</p>
                 </div>
               </div>
             </div>

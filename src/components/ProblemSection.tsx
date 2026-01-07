@@ -1,37 +1,22 @@
 import { motion } from "framer-motion";
-import { Droplets, Bug, HelpCircle, Users, CircleDollarSign, Clock } from "lucide-react";
+import { Droplets, Home, Bug } from "lucide-react";
 
 const ProblemSection = () => {
   const problems = [
     {
       icon: Droplets,
-      title: "Wasserschäden",
-      description: "Unentdeckte Leckagen führen zu schwerwiegenden Bauschäden und hohen Folgekosten.",
+      title: "Wasserschaden",
+      description: "Wasserschäden entstehen oft plötzlich – durch Rohrbrüche, undichte Leitungen oder Überschwemmungen. Wir setzen auf präzise Leckortung und fachlich fundierte Ursachenanalyse, um den Schaden zuverlässig einzugrenzen. Anschließend erfolgt die fachgerechte Trocknung und Sanierung, damit Ihre Immobilie nachhaltig geschützt bleibt. Mit unserer Fachexpertise und transparenter Dokumentation sorgen wir für Sicherheit und Werterhalt.",
+    },
+    {
+      icon: Home,
+      title: "Feuchteschaden",
+      description: "Feuchtigkeitsschäden entwickeln sich meist schleichend – durch undichte Dächer, mangelhafte Abdichtungen oder Kondensation. Wir analysieren die Ursachen präzise und leiten die passenden Maßnahmen ein: von der fachgerechten Trocknung bis zur nachhaltigen Sanierung. Unsere Fachexpertise garantiert eine Lösung, die zukünftige Schäden verhindert und den Wert Ihrer Immobilie langfristig sichert.",
     },
     {
       icon: Bug,
-      title: "Feuchtigkeit & Schimmel",
-      description: "Feuchtigkeit in Gebäuden verursacht Schimmelbefall und gesundheitliche Risiken.",
-    },
-    {
-      icon: HelpCircle,
-      title: "Unklare Ursachen",
-      description: "Ohne professionelle Analyse bleiben die wahren Schadensursachen oft unerkannt.",
-    },
-    {
-      icon: Users,
-      title: "Koordinationsprobleme",
-      description: "Viele Gewerke, fehlende Abstimmung – das führt zu Verzögerungen und Fehlern.",
-    },
-    {
-      icon: CircleDollarSign,
-      title: "Versteckte Kosten",
-      description: "Ungeplante Mehrkosten durch mangelhafte Planung und unerwartete Schäden.",
-    },
-    {
-      icon: Clock,
-      title: "Zeitverzögerungen",
-      description: "Lange Wartezeiten und Verzögerungen verzögern die Sanierung und erhöhen die Kosten.",
+      title: "Schimmelpilz",
+      description: "Schimmelpilz ist nicht nur ein optisches Problem, sondern auch ein Gesundheitsrisiko. Wir gehen der Ursache auf den Grund – mit präziser Analyse. Nach der Ursachenbeseitigung führen wir die Sanierung professionell durch, um Ihre Räume dauerhaft gesund und trocken zu halten. Unsere Fachexpertise sorgt dafür, dass nicht nur die Symptome verschwinden, sondern die Ursache nachhaltig behoben wird.",
     },
   ];
 
@@ -46,11 +31,11 @@ const ProblemSection = () => {
           className="text-center mb-12"
         >
           <h2 className="section-title mb-4">
-            Kennen Sie diese Probleme?
+            Schäden erkennen, bevor sie teuer werden!
           </h2>
           <p className="section-subtitle mx-auto">
-            Bauwerkschäden sind komplex. Ohne Fachwissen wird die Sanierung 
-            schnell zum unüberschaubaren Projekt.
+            Wasserschäden und Feuchtigkeit brauchen präzise Analyse und professionelle
+            Lösungen – nur so vermeiden Sie Folgeschäden und hohe Kosten.
           </p>
         </motion.div>
 

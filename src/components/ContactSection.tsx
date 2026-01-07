@@ -87,8 +87,7 @@ const ContactSection = () => {
               Professionelle Schadensanalyse anfragen
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              Beschreiben Sie Ihr Anliegen und wir melden uns zeitnah bei Ihnen
-              für eine erste Einschätzung.
+              Wir reagieren umgehend und melden uns so schnell wie möglich bei Ihnen.
             </p>
 
             {isSubmitted ? (
@@ -163,7 +162,7 @@ const ContactSection = () => {
                     <SelectContent>
                       <SelectItem value="water">Wasserschaden</SelectItem>
                       <SelectItem value="moisture">Feuchtigkeit / Schimmel</SelectItem>
-                      <SelectItem value="structural">Bauwerksschäden</SelectItem>
+                      <SelectItem value="structural">Sanierung</SelectItem>
                       <SelectItem value="consultation">Beratung</SelectItem>
                       <SelectItem value="other">Sonstiges</SelectItem>
                     </SelectContent>
@@ -297,7 +296,7 @@ const ContactSection = () => {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-accent" />
-                    Antwort innerhalb von 24 Stunden
+                    24/7 Reaktionszeit
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-accent" />
@@ -305,7 +304,7 @@ const ContactSection = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-accent" />
-                    Deutschlandweit verfügbar
+                    In der Rhein-Neckar-Region erreichbar
                   </li>
                 </ul>
               </div>

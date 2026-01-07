@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, Shield, CheckCircle2, TrendingUp } from "lucide-react";
-import heroImage from "@/assets/hero-inspection.jpg";
+import { ArrowRight, Shield, CheckCircle2 } from "lucide-react";
+import heroImage from "@/assets/i.png";
 
 // Animation variants for better performance
 const orbVariants: Variants = {
@@ -39,15 +39,14 @@ const ANIMATION_DELAYS = {
   stats: 0.6,
   image: 0.3,
   floatingCard: 0.8,
-  achievementBadge: 1,
 } as const;
 
 const HeroSection = () => {
   const stats = useMemo(
     () => [
-      { value: "500+", label: "Projekte" },
-      { value: "98%", label: "Zufriedenheit" },
-      { value: "15+", label: "Jahre Erfahrung" },
+      { value: "100 %", label: "Fachexpertise" },
+      { value: "+10", label: "Jahre Erfahrung" },
+      { value: "24/7", label: "Reaktionszeit" },
     ],
     []
   );
@@ -113,7 +112,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20"
             >
               <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
-              Professionelle Bauwerksanierung
+              Ganzheitliche Schadensanalyse und Sanierung
             </motion.span>
 
             <motion.h1
@@ -122,9 +121,9 @@ const HeroSection = () => {
               transition={{ delay: ANIMATION_DELAYS.heading, duration: 0.6, ease: "easeOut" }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight"
             >
-              <span className="block text-foreground mb-2">Bausubstanz retten,</span>
+              <span className="block text-foreground mb-2">Fundierte Schadenanalyse</span>
               <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent">
-                Werte erhalten
+                Nachhaltiger Werterhalt
               </span>
             </motion.h1>
 
@@ -134,8 +133,12 @@ const HeroSection = () => {
               transition={{ delay: ANIMATION_DELAYS.description, duration: 0.6, ease: "easeOut" }}
               className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl"
             >
-              Professionelle Ingenieur-Expertise für Ihre Sanierung. Wir finden die wahre Ursache
-              Ihrer Bauschäden und begleiten Sie zuverlässig bis zur vollständigen Wiederherstellung.
+              Mit Ingenieur-Expertise sind wir Ihr verlässlicher Partner für
+              professionelle Schadenanalyse, präzise Leckortung, fachgerechte
+              Trocknung, nachhaltige und fachgerechte Sanierung sowie
+              verlässliche Dokumentation von Wasserschäden,
+              Feuchtigkeitsschäden und Schimmelbefall – alles aus einer Hand,
+              zuverlässig und transparent.
             </motion.p>
 
             {/* CTAs */}
@@ -152,7 +155,7 @@ const HeroSection = () => {
                 asChild
               >
                 <a href="#contact" aria-label="Kontaktformular öffnen">
-                  Inspektion anfragen
+                  Jetzt Schaden melden
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </a>
               </Button>
@@ -252,27 +255,6 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* Floating Achievement Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: ANIMATION_DELAYS.achievementBadge,
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-              }}
-              className="absolute -top-6 -right-6 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl p-4 shadow-xl border border-primary/20"
-              aria-label="Bewährt seit 2009"
-            >
-              <div className="flex items-center gap-3">
-                <TrendingUp className="w-6 h-6" aria-hidden="true" />
-                <div>
-                  <p className="text-sm font-semibold">Bewährt</p>
-                  <p className="text-xs opacity-90">Seit 2009</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

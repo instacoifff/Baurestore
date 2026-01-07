@@ -12,28 +12,28 @@ const ServicesSection = () => {
       title: "Schadenanalyse",
       description: "Fachgerechte Analyse von Bauschäden durch Wasser und Feuchtigkeit sowie daraus resultierendem Schimmelbefall, mit präziser Leckortung, fundierter Ursachenbestimmung und verlässlicher Dokumentation.",
       image: serviceAnalysis,
-      benefits: ["Präzise Leckortung", "Ursachenforschung", "Dokumentation"],
+      benefits: ["Präzise Leckortung", "Schadenanalyse", "Dokumentation"],
     },
     {
       icon: Wind,
-      title: "Trocknungskonzepte",
+      title: "Trocknung",
       description: "Auswahl geeigneter Trocknungsverfahren mit klar definiertem Ablauf und Dauer, inklusive laufender Kontrolle und fachlicher Begleitung.",
       image: serviceDrying,
-      benefits: ["Optimale Verfahren", "Zeitplanung", "Monitoring"],
+      benefits: ["Kontrolle", "Begleitung", "Dokumentation"],
     },
     {
       icon: Wrench,
       title: "Sanierungskonzepte",
       description: "Festlegung der Sanierungsziele, Entwicklung technischer Lösungsvarianten und Erstellung einer groben Kosten- und Terminabschätzung zur Bewertung der Umsetzbarkeit.",
       image: serviceConcept,
-      benefits: ["Zieldefinition", "Kostenübersicht", "Lösungsvarianten"],
+      benefits: ["Lösungsvarianten", "Kostenübersicht", "Ablauf"],
     },
     {
       icon: ClipboardList,
       title: "Sanierungsmanagement",
       description: "Koordination aller Beteiligten, Termin-, Kosten- und Qualitätskontrolle sowie Bauüberwachung/Bauleitung bei fachlich gesteuerter Ausführung durch Partnerunternehmen.",
       image: serviceManagement,
-      benefits: ["Projektsteuerung", "Qualitätssicherung", "Koordination"],
+      benefits: ["Projektsteuerung", "Qualitätssicherung", "Dokumentation"],
     },
   ];
 
@@ -54,8 +54,8 @@ const ServicesSection = () => {
             Professionelle Ingenieurdienstleistungen
           </h2>
           <p className="section-subtitle mx-auto">
-            Von der ersten Analyse bis zur vollständigen Sanierung – 
-            strukturiert, transparent und fachlich fundiert.
+            Von der Schadenanalyse bis zur fachgerechten Sanierung – mit Fachexpertise,
+            Transparenz und klarer Struktur.
           </p>
         </motion.div>
 

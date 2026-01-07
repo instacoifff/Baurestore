@@ -1,37 +1,37 @@
 import { motion } from "framer-motion";
-import { MapPin, FileSearch, FileText, Users, CheckCircle } from "lucide-react";
+import { FileSearch, FileText, Wind, ClipboardList, Users } from "lucide-react";
 
 const ProcessSection = () => {
   const steps = [
     {
-      icon: MapPin,
-      number: "01",
-      title: "Vor-Ort-Inspektion",
-      description: "Persönliche Besichtigung und Aufnahme aller relevanten Messwerte und Befunde.",
-    },
-    {
       icon: FileSearch,
-      number: "02",
+      number: "01",
       title: "Schadenanalyse",
-      description: "Detaillierte Analyse der Schadensursachen mit professioneller Dokumentation.",
+      description: "Präzise Ursachenanalyse und Leckortung mit fachgerechter Dokumentation.",
     },
     {
       icon: FileText,
+      number: "02",
+      title: "Trocknungskonzept",
+      description: "Entwicklung eines individuellen, fachlich fundierten Trocknungsplans für effiziente Feuchtigkeitsbeseitigung.",
+    },
+    {
+      icon: Wind,
       number: "03",
-      title: "Lösungskonzept",
-      description: "Entwicklung technischer Lösungen mit transparenter Kosten- und Terminschätzung.",
+      title: "Trocknung",
+      description: "Fachgerechte Umsetzung des Trocknungskonzepts mit kontinuierlicher Kontrolle.",
+    },
+    {
+      icon: ClipboardList,
+      number: "04",
+      title: "Sanierungskonzept & Entscheidung",
+      description: "Erarbeitung der Sanierungsmaßnahmen und verbindliche Entscheidung für die Umsetzung – inklusive Kosten- und Terminübersicht.",
     },
     {
       icon: Users,
-      number: "04",
-      title: "Koordination",
-      description: "Abstimmung aller Beteiligten und Steuerung der fachgerechten Ausführung.",
-    },
-    {
-      icon: CheckCircle,
       number: "05",
-      title: "Qualitätskontrolle",
-      description: "Finale Prüfung, Dokumentation und strukturierte Übergabe des Projekts.",
+      title: "Sanierungsmanagement",
+      description: "Koordination aller Beteiligten, Überwachung der Ausführung und transparente Abschlussdokumentation.",
     },
   ];
 

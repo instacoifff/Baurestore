@@ -6,7 +6,7 @@ const WhyUsSection = () => {
     {
       icon: GraduationCap,
       title: "Erfahrung",
-      description: "Jahrelange Expertise in der Analyse und Sanierung von Bauwerksschäden.",
+      description: "Langjährige Erfahrung in fachgerechter Analyse und nachhaltiger Instandsetzung von Gebäuden.",
     },
     {
       icon: Layers,

@@ -7,31 +7,31 @@ const ProcessSection = () => {
       icon: FileSearch,
       number: "01",
       title: "Schadenanalyse",
-      description: "Präzise Ursachenanalyse und Leckortung mit fachgerechter Dokumentation.",
+      description: "Präzise Ursachenanalyse inklusive Leckortung sowie fachgerechte Dokumentation des Schadensbildes.",
     },
     {
       icon: FileText,
       number: "02",
       title: "Trocknungskonzept",
-      description: "Entwicklung eines individuellen, fachlich fundierten Trocknungsplans für effiziente Feuchtigkeitsbeseitigung.",
+      description: "Entwicklung eines individuellen, fachlichen Trocknungskonzepts zur effizienten Feuchtigkeitsbeseitigung.",
     },
     {
       icon: Wind,
       number: "03",
       title: "Trocknung",
-      description: "Fachgerechte Umsetzung des Trocknungskonzepts mit kontinuierlicher Kontrolle.",
+      description: "Fachgerechte Umsetzung des Trocknungskonzepts mit kontinuierlicher Überwachung der Trocknungsparameter.",
     },
     {
       icon: ClipboardList,
       number: "04",
-      title: "Sanierungskonzept & Entscheidung",
-      description: "Erarbeitung der Sanierungsmaßnahmen und verbindliche Entscheidung für die Umsetzung – inklusive Kosten- und Terminübersicht.",
+      title: "Sanierungskonzept",
+      description: "Entwicklung geeigneter Sanierungslösungen inklusive Kostenabschätzung und Terminplanung als Entscheidungsgrundlage.",
     },
     {
       icon: Users,
       number: "05",
       title: "Sanierungsmanagement",
-      description: "Koordination aller Beteiligten, Überwachung der Ausführung und transparente Abschlussdokumentation.",
+      description: "Koordination und Steuerung aller beteiligten Partnerunternehmen, Überwachung der Ausführung sowie transparente Abschlussdokumentation.",
     },
   ];
 
@@ -46,7 +46,7 @@ const ProcessSection = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Unser Ablauf
+            Ablauf
           </span>
           <h2 className="section-title mb-4">
             So arbeiten wir zusammen

@@ -79,11 +79,6 @@ const Footer = () => {
                   Datenschutz
                 </a>
               </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
-                  AGB
-                </a>
-              </li>
             </ul>
           </div>
         </div>

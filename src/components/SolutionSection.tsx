@@ -4,10 +4,22 @@ import { Button } from "@/components/ui/button";
 
 const SolutionSection = () => {
   const solutions = [
-    "Eine zentrale Anlaufstelle für Ihr gesamtes Sanierungsprojekt Von der Ursachenanalyse und präzisen Leckortung bis zur vollständigen Wiederherstellung.",
-    "Ingenieur-Know-how für objektive und fachgerechte Lösungen Unabhängig, transparent und ausschließlich auf Ihren Werterhalt ausgerichtet.",
-    "Strukturierter Prozess mit klarer Dokumentation Jeder Schritt nachvollziehbar – für maximale Sicherheit und Vertrauen.",
-    "Verbindliche Kosten- und Terminplanung Sicherheit für eine effiziente und wirtschaftliche Umsetzung.",
+    {
+      title: "Eine zentrale Anlaufstelle für Ihr gesamtes Sanierungsprojekt",
+      description: "Von der Ursachenanalyse und präzisen Leckortung bis zur vollständigen Wiederherstellung.",
+    },
+    {
+      title: "Ingenieur-Know-how für objektive und fachgerechte Lösungen",
+      description: "Unabhängig, transparent und ausschließlich auf Ihren Werterhalt ausgerichtet.",
+    },
+    {
+      title: "Strukturierter Prozess mit klarer Dokumentation",
+      description: "Jeder Schritt nachvollziehbar – für maximale Sicherheit und Vertrauen.",
+    },
+    {
+      title: "Verbindliche Kosten- und Terminplanung",
+      description: "Sicherheit für eine effiziente und wirtschaftliche Umsetzung.",
+    },
   ];
 
   return (
@@ -22,7 +34,7 @@ const SolutionSection = () => {
             transition={{ duration: 0.5 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6">
-              Die Lösung
+              Die Probleme
             </span>
             
             <h2 className="section-title mb-6">
@@ -47,7 +59,10 @@ const SolutionSection = () => {
                   className="flex items-start gap-3"
                 >
                   <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground">{solution}</span>
+                  <div className="flex flex-col">
+                    <span className="font-bold text-foreground mb-1">{solution.title}</span>
+                    <span className="font-normal text-foreground">{solution.description}</span>
+                  </div>
                 </motion.li>
               ))}
             </ul>
@@ -83,13 +98,6 @@ const SolutionSection = () => {
                 <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
                   <p className="text-4xl font-bold text-primary mb-2">24/7</p>
                   <p className="text-sm text-muted-foreground">Reaktionszeit</p>
-                </div>
-                <div className="bg-[#f0f9ff] rounded-[3rem] p-10 flex flex-col justify-center relative overflow-hidden">
-                  <span className="text-6xl font-bold text-[#00adef] leading-none mb-3">DE</span>
-                  <span className="text-xl text-[#5a6b81] font-medium">Deutschland-weit</span>
-                  <div className="absolute right-10 top-1/2 -translate-y-1/2">
-                    <div className="w-4 h-4 rounded-full bg-[#4ade80]"></div>
-                  </div>
                 </div>
               </div>
             </div>

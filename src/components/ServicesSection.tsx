@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Search, Wind, Wrench, ClipboardList } from "lucide-react";
-import serviceAnalysis from "@/assets/service-analysis.jpg";
-import serviceDrying from "@/assets/service-drying.jpg";
-import serviceConcept from "@/assets/service-concept.jpg";
-import serviceManagement from "@/assets/service-management.jpg";
+import serviceAnalysis from "@/assets/1.jpg";
+import serviceDrying from "@/assets/2.jpg";
+import serviceConcept from "@/assets/3.jpg";
+import serviceManagement from "@/assets/4.jpg";
 
 const ServicesSection = () => {
   const services = [
@@ -16,7 +16,7 @@ const ServicesSection = () => {
     },
     {
       icon: Wind,
-      title: "Trocknung",
+      title: "Trocknungskonzept | Trocknung",
       description: "Auswahl geeigneter Trocknungsverfahren mit klar definiertem Ablauf und Dauer, inklusive laufender Kontrolle und fachlicher Begleitung.",
       image: serviceDrying,
       benefits: ["Kontrolle", "Begleitung", "Dokumentation"],
@@ -24,7 +24,7 @@ const ServicesSection = () => {
     {
       icon: Wrench,
       title: "Sanierungskonzepte",
-      description: "Festlegung der Sanierungsziele, Entwicklung technischer Lösungsvarianten und Erstellung einer groben Kosten- und Terminabschätzung zur Bewertung der Umsetzbarkeit.",
+      description: "Festlegung der Sanierungsziele, Entwicklung technischer Lösungsvarianten und Erstellung einer Kostenschätzung und Terminplanung als Entscheidungsgrundlage",
       image: serviceConcept,
       benefits: ["Lösungsvarianten", "Kostenübersicht", "Ablauf"],
     },
@@ -48,7 +48,7 @@ const ServicesSection = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Unsere Leistungen
+            Leistungen
           </span>
           <h2 className="section-title mb-4">
             Professionelle Ingenieurdienstleistungen

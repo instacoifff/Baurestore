@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, Shield, CheckCircle2 } from "lucide-react";
-import heroImage from "@/assets/i.png";
+import { ArrowRight } from "lucide-react";
+import heroImage from "@/assets/i.jpg";
 
 // Animation variants for better performance
 const orbVariants: Variants = {
@@ -53,12 +53,20 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${heroImage})`,
+      }}
       aria-label="Hero section"
     >
+      {/* Background Overlay */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/50 to-background/50"
+        aria-hidden="true"
+      />
       {/* Animated Background Gradient */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/30 via-background to-background"
+        className="absolute inset-0 bg-gradient-to-br from-primary/50 via-secondary/50 via-background/50 to-background/50"
         aria-hidden="true"
       />
 
@@ -96,34 +104,30 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="section-container relative z-10 py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-2xl"
-          >
+      <div className="relative z-10 py-16 md:py-24 flex items-center min-h-[calc(100vh-5rem)] w-full overflow-visible">
+        {/* Text Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-5xl w-full pl-4 sm:pl-6 lg:pl-8 pr-8 sm:pr-12 lg:pr-16 pb-8 overflow-visible"
+        >
             <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: ANIMATION_DELAYS.badge, duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: ANIMATION_DELAYS.badge, duration: 0.6, ease: "easeOut" }}
+              className="inline-block px-4 py-1.5 rounded-full bg-accent/40 text-accent text-sm font-medium mb-6"
             >
-              <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
-              Ganzheitliche Schadensanalyse und Sanierung
+              mathothech
             </motion.span>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.heading, duration: 0.6, ease: "easeOut" }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight overflow-visible w-full"
             >
-              <span className="block text-foreground mb-2">Fundierte Schadenanalyse</span>
-              <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent">
-                Nachhaltiger Werterhalt
+              <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent overflow-visible pr-8 sm:pr-12 lg:pr-16">
+                <span className="whitespace-nowrap inline-block">Ingenieurdienstleistungen</span> für Bauschäden & <span className="whitespace-nowrap inline-block">Sanierungsmanagement.</span>
               </span>
             </motion.h1>
 
@@ -197,66 +201,7 @@ const HeroSection = () => {
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>
-
-          {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: ANIMATION_DELAYS.image, ease: "easeOut" }}
-            className="relative"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-              <motion.img
-                src={heroImage}
-                alt="BauRestore Ingenieure bei der professionellen Bauwerksinspektion und Schadensanalyse"
-                className="w-full h-auto object-cover aspect-[4/3]"
-                loading="eager"
-                fetchPriority="high"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/10 to-transparent"
-                aria-hidden="true"
-              />
-
-              {/* Decorative Corner Accent */}
-              <div
-                className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full"
-                aria-hidden="true"
-              />
-            </div>
-
-            {/* Floating Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, y: 30 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{
-                delay: ANIMATION_DELAYS.floatingCard,
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-              }}
-              className="absolute -bottom-8 -left-8 bg-card rounded-2xl p-6 shadow-2xl border border-border/50 backdrop-blur-sm"
-              aria-label="100% Transparenz"
-            >
-              <div className="flex items-center gap-4">
-                <div
-                  className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border border-primary/20"
-                  aria-hidden="true"
-                >
-                  <Shield className="w-7 h-7 text-primary" />
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-foreground">100%</p>
-                  <p className="text-sm text-muted-foreground font-medium">Transparenz</p>
-                </div>
-              </div>
-            </motion.div>
-
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

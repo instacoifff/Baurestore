@@ -1,20 +1,66 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import buroImage from "@/assets/buro.png";
 import appartementsImage from "@/assets/appartements.png";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const projects = [
     {
         title: "Hausverwaltungen",
         image: appartementsImage,
+        details: {
+            title: "Hausverwaltung",
+            description: "Die Betreuung mehrerer Objekte erfordert schnelle und effiziente Lösungen – wir kennen diese Herausforderung. Hausverwaltungen erwarten kurze Reaktionszeiten, klare Kommunikation und verlässliche Kostenübersichten, um Mieterausfälle und Folgeschäden zu vermeiden. BauRestore bietet präzise Schadenanalyse, fachgerechte Trocknung und nachhaltige Sanierung – alles aus einer Hand. Jeder Schritt wird transparent dokumentiert, damit Sie jederzeit den Überblick behalten.",
+            expectations: [
+                "Schnelle Reaktionszeit",
+                "Kostenkontrolle und klare Abläufe",
+                "Minimierung von Mieterausfällen",
+                "Transparente Kommunikation",
+            ],
+        },
     },
     {
         title: "Versicherungen",
         image: buroImage,
+        details: {
+            title: "Versicherungen",
+            description: "Wir wissen, dass Versicherungen auf detaillierte und nachvollziehbare Schadensdokumentation angewiesen sind, um Fälle korrekt zu bewerten und effizient zu regulieren. Deshalb liefern wir strukturierte Berichte, die alle relevanten Informationen enthalten – von der Schadenanalyse bis zur Sanierung. Unser Ziel: klare Prozesse, verlässliche Daten und eine reibungslosere Regulierung.",
+            expectations: [
+                "Vollständige und präzise Dokumentation",
+                "Transparente Kostenübersichten",
+                "Effiziente Schadensabwicklung",
+                "Verlässliche Kommunikation",
+            ],
+        },
     },
 ];
 
 const ProjectsSection = () => {
+    const [openDialog, setOpenDialog] = useState<number | null>(null);
+
+    const handleContactClick = () => {
+        setOpenDialog(null);
+        setTimeout(() => {
+            const contactSection = document.querySelector("#contact");
+            if (contactSection) {
+                const headerHeight = 80;
+                const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth",
+                });
+            }
+        }, 100);
+    };
+
     return (
         <section id="projekte" className="section-padding bg-muted/30">
             <div className="section-container">
@@ -27,13 +73,13 @@ const ProjectsSection = () => {
                         className="max-w-2xl"
                     >
                         <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                            Referenzprojekte
+                            Partner
                         </span>
                         <h2 className="section-title mb-4">
-                            Erfolgreich abgeschlossene Sanierungen
+                            Hausverwaltungen & Versicherungen
                         </h2>
                         <p className="section-subtitle mb-0">
-                            Ein Auszug aus unserer täglichen Arbeit für private und gewerbliche Kunden in der Region.
+                            BauRestore – verlässlicher Partner für Hausverwaltungen und Versicherungen.
                         </p>
                     </motion.div>
 
@@ -60,7 +106,8 @@ const ProjectsSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-elevation-lg transition-all duration-300"
+                            className="group bg-card rounded-2xl overflow-hidden border border-border shadow-card hover:shadow-elevation-lg transition-all duration-300 cursor-pointer"
+                            onClick={() => setOpenDialog(index)}
                         >
                             <div className="aspect-[4/3] overflow-hidden relative">
                                 <img
@@ -86,12 +133,6 @@ const ProjectsSection = () => {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="mt-16 bg-card rounded-2xl border border-border shadow-card p-8 md:p-12"
                 >
-                    <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">
-                        Hausverwaltungen & Versicherungen
-                    </h3>
-                    <p className="text-lg font-semibold text-primary mb-6">
-                        BauRestore – verlässlicher Partner für Hausverwaltungen und Versicherungen.
-                    </p>
                     <p className="text-muted-foreground mb-8 leading-relaxed">
                         BauRestore steht für Fachexpertise und transparente Prozesse. Wir kennen die
                         Anforderungen von Hausverwaltungen und Versicherungen: schnelle Reaktionszeiten,
@@ -122,6 +163,58 @@ const ProjectsSection = () => {
                     </ul>
                 </motion.div>
             </div>
+
+            {projects.map((project, index) => (
+                <Dialog
+                    key={index}
+                    open={openDialog === index}
+                    onOpenChange={(open) => setOpenDialog(open ? index : null)}
+                >
+                    <DialogContent className="max-w-4xl h-[90vh] max-h-[90vh] overflow-hidden p-0 flex flex-col md:flex-row">
+                        <div className="w-full md:flex-1 aspect-[4/3] md:aspect-auto md:h-full h-full overflow-hidden relative flex-shrink-0">
+                            <img
+                                src={project.image}
+                                alt={project.details.title}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="p-6 overflow-y-auto md:w-96 flex-shrink-0 md:h-full">
+                            <DialogHeader>
+                                <DialogTitle className="text-2xl font-display font-bold">
+                                    {project.details.title}
+                                </DialogTitle>
+                                <DialogDescription className="text-base leading-relaxed pt-4">
+                                    {project.details.description}
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div className="mt-6">
+                                <h4 className="text-lg font-semibold mb-4">
+                                    Erwartungen, die wir erfüllen:
+                                </h4>
+                                <ul className="space-y-3">
+                                    {project.details.expectations.map((expectation, idx) => (
+                                        <li key={idx} className="flex items-start gap-3">
+                                            <span className="text-primary font-bold mt-1">✔</span>
+                                            <span className="text-muted-foreground">{expectation}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="mt-8">
+                                <Button
+                                    variant="cta"
+                                    size="lg"
+                                    className="w-full group"
+                                    onClick={handleContactClick}
+                                >
+                                    Jetzt Kontakt aufnehmen
+                                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </div>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ))}
         </section>
     );
 };

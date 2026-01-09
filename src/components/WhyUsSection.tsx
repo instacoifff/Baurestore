@@ -56,7 +56,7 @@ const WhyUsSection = () => {
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary-foreground/20 text-primary-foreground text-sm font-medium mb-4">
-            Warum BauRestore?
+            Warum wie
           </span>
           <h2 className="section-title text-primary-foreground mb-4">
             Das macht uns aus

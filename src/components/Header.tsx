@@ -8,10 +8,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: "Home", href: "#" },
     { name: "Leistungen", href: "#services" },
     { name: "Ablauf", href: "#process" },
-    { name: "Warum Wir", href: "#why-us" },
-    { name: "Referenzen", href: "#projekte" },
+    { name: "Partner", href: "#projekte" },
+    { name: "Warum wir", href: "#why-us" },
     { name: "Kontakt", href: "#contact" },
   ];
 

@@ -170,15 +170,15 @@ const ProjectsSection = () => {
                     open={openDialog === index}
                     onOpenChange={(open) => setOpenDialog(open ? index : null)}
                 >
-                    <DialogContent className="max-w-4xl h-[90vh] max-h-[90vh] overflow-hidden p-0 flex flex-col md:flex-row">
-                        <div className="w-full md:flex-1 aspect-[4/3] md:aspect-auto md:h-full h-full overflow-hidden relative flex-shrink-0">
+                    <DialogContent className="max-w-4xl w-[95vw] sm:w-full h-[95vh] sm:h-[90vh] max-h-[95vh] sm:max-h-[90vh] overflow-hidden p-0 flex flex-col md:flex-row">
+                        <div className="w-full md:flex-1 aspect-[4/3] md:aspect-auto md:h-full h-auto max-h-[40vh] sm:max-h-[50vh] md:max-h-full overflow-hidden relative flex-shrink-0">
                             <img
                                 src={project.image}
                                 alt={project.details.title}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="p-6 overflow-y-auto md:w-96 flex-shrink-0 md:h-full">
+                        <div className="p-4 sm:p-6 overflow-y-auto md:w-96 flex-shrink-0 md:h-full flex-1">
                             <DialogHeader>
                                 <DialogTitle className="text-2xl font-display font-bold">
                                     {project.details.title}

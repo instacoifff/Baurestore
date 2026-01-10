@@ -70,12 +70,15 @@ const Footer = () => {
             <h4 className="font-display font-semibold text-background mb-4">Rechtliches</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
+                <a href="/impressum" className="text-background/70 hover:text-background transition-colors">
                   Impressum
                 </a>
               </li>
               <li>
-                <a href="#" className="text-background/70 hover:text-background transition-colors">
+                <a 
+                  href="/datenschutz" 
+                  className="text-background/70 hover:text-background transition-colors"
+                >
                   Datenschutz
                 </a>
               </li>

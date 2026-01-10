@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Logo className="mb-4 [&>img]:!h-16" inverted />
             <p className="text-background/70 max-w-sm mb-4">
-              Ingenieurdienstleistungen für Bauschäden & Sanierungsmanagement. 
+              Ingenieurdienstleistungen für Bauschäden & Sanierungsmanagement.<br />
               Alles aus einer Hand – von der Schadenfeststellung bis zur Wiederherstellung.
             </p>
             <a 

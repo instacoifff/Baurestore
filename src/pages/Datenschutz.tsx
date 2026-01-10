@@ -1,8 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import datenschutzPdf from "@/assets/Strato_Homepage-Datenschutz.pdf";
 
 const Datenschutz = () => {
+  const pdfPath = "/Strato_Homepage-Datenschutz.pdf";
+  
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -19,15 +20,16 @@ const Datenschutz = () => {
               <div className="mt-8">
                 <div className="w-full border border-border rounded-lg overflow-hidden shadow-lg">
                   <iframe
-                    src={datenschutzPdf}
+                    src={pdfPath}
                     className="w-full h-[800px]"
                     title="Datenschutzerklärung PDF"
+                    type="application/pdf"
                   />
                 </div>
                 
                 <div className="mt-4 text-center">
                   <a
-                    href={datenschutzPdf}
+                    href={pdfPath}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"

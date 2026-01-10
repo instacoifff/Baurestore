@@ -30,6 +30,9 @@ const ProblemSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6">
+            Die Probleme
+          </span>
           <h2 className="section-title mb-4">
             Schäden erkennen, bevor sie teuer werden!
           </h2>

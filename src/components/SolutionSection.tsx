@@ -34,9 +34,8 @@ const SolutionSection = () => {
             transition={{ duration: 0.5 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6">
-              Die Probleme
+              Die Lösung
             </span>
-            
             <h2 className="section-title mb-6">
               <span className="text-primary">Alles aus einer Hand</span> –<br />
               von der Schadenfeststellung bis zur Wiederherstellung

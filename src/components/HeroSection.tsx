@@ -105,13 +105,14 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 py-16 md:py-24 flex items-center min-h-[calc(100vh-5rem)] w-full overflow-visible">
-        {/* Text Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-5xl w-full pl-4 sm:pl-6 lg:pl-8 pr-8 sm:pr-12 lg:pr-16 pb-8 overflow-visible"
-        >
+        <div className="section-container w-full">
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-5xl w-full pb-8 overflow-visible"
+          >
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -201,7 +202,8 @@ const HeroSection = () => {
                 </motion.div>
               ))}
             </motion.div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

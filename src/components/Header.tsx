@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,6 +7,8 @@ import Logo from "@/components/Logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
     { name: "Home", href: "#hero" },
@@ -52,7 +55,24 @@ const Header = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMenuOpen(false);
-    smoothScrollTo(href, 600); // 600ms - Fast, responsive scroll speed
+    
+    // If we're not on the home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation and DOM to be ready before scrolling
+      const scrollToSection = () => {
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          smoothScrollTo(href, 600);
+        } else {
+          // Retry if element not found yet
+          setTimeout(scrollToSection, 50);
+        }
+      };
+      setTimeout(scrollToSection, 150);
+    } else {
+      smoothScrollTo(href, 600);
+    }
   };
 
   return (

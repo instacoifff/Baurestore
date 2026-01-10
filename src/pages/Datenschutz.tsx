@@ -18,13 +18,41 @@ const Datenschutz = () => {
               </p>
               
               <div className="mt-8">
-                <div className="w-full border border-border rounded-lg overflow-hidden shadow-lg">
-                  <iframe
-                    src={pdfPath}
-                    className="w-full h-[800px]"
-                    title="Datenschutzerklärung PDF"
+                <div className="w-full border border-border rounded-lg overflow-hidden shadow-lg bg-muted/50">
+                  <object
+                    data={pdfPath}
                     type="application/pdf"
-                  />
+                    className="w-full h-[800px]"
+                    aria-label="Datenschutzerklärung PDF"
+                  >
+                    <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+                      <p className="text-muted-foreground mb-4">
+                        Ihr Browser kann PDFs nicht direkt anzeigen.
+                      </p>
+                      <a
+                        href={pdfPath}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                      >
+                        PDF öffnen
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </object>
                 </div>
                 
                 <div className="mt-4 text-center">

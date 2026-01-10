@@ -36,10 +36,10 @@ const ProblemSection = () => {
           <h2 className="section-title mb-4">
             Schäden erkennen, bevor sie teuer werden!
           </h2>
-          <p className="section-subtitle mx-auto">
-            Wasserschäden und Feuchtigkeit brauchen präzise Analyse und professionelle
-            Lösungen – nur so vermeiden Sie Folgeschäden und hohe Kosten.
-          </p>
+          <div className="section-subtitle mx-auto flex flex-col items-center text-center">
+            <span>Wasserschäden und Feuchtigkeit brauchen präzise Analyse und professionelle Lösungen –</span>
+            <span>nur so vermeiden Sie Folgeschäden und hohe Kosten.</span>
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

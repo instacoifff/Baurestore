@@ -53,6 +53,7 @@ const HeroSection = () => {
 
   return (
     <section
+      id="hero"
       className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${heroImage})`,
@@ -61,12 +62,12 @@ const HeroSection = () => {
     >
       {/* Background Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/50 to-background/50"
+        className="absolute inset-0 bg-gradient-to-br from-background/25 via-background/25 to-background/25"
         aria-hidden="true"
       />
       {/* Animated Background Gradient */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-primary/50 via-secondary/50 via-background/50 to-background/50"
+        className="absolute inset-0 bg-gradient-to-br from-primary/25 via-secondary/25 via-background/25 to-background/25"
         aria-hidden="true"
       />
 
@@ -113,14 +114,6 @@ const HeroSection = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-5xl w-full pb-8 overflow-visible"
           >
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.badge, duration: 0.6, ease: "easeOut" }}
-              className="inline-block px-5 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-semibold mb-6 shadow-sm hover:shadow-md transition-all duration-300"
-            >
-              mathothech
-            </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

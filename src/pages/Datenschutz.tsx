@@ -53,7 +53,7 @@ const Datenschutz = () => {
                   </p>
                   <p className="mb-2">
                     Sofern Sie uns anlässlich eines konkreten Geschäfts (beispielsweise einer getätigten Bestellung) per WhatsApp kontaktieren, speichern und verwenden wir die von Ihnen bei WhatsApp genutzte Mobilfunknummer sowie – falls bereitgestellt – Ihren Vor- und Nachnamen gemäß Art. 6 Abs. 1 lit. b. DSGVO zur Bearbeitung und Beantwortung Ihres Anliegens. Auf Basis derselben Rechtsgrundlage werden wir Sie per WhatsApp gegebenenfalls um die Bereitstellung weiterer Daten (Bestellnummer, Kundennummer, Anschrift oder E-Mailadresse) bitten, um Ihre Anfrage einem bestimmten Vorgang zuordnen zu können.
-                  </p>
+                      </p>
                   <p className="mb-2">
                     Nutzen Sie unseren WhatsApp-Kontakt für allgemeine Anfragen (etwa zum Leistungsspektrum, zu Verfügbarkeiten oder zu unserem Internetauftritt) speichern und verwenden wir die von Ihnen bei WhatsApp genutzte Mobilfunknummer sowie – falls bereitgestellt – Ihren Vor- und Nachnamen gemäß Art. 6 Abs. 1 lit. f DSGVO auf Basis unseres berechtigten Interesses an der effizienten und zeitnahen Bereitstellung der gewünschten Informationen.
                   </p>
@@ -87,7 +87,7 @@ const Datenschutz = () => {
                   <p className="mt-2">
                     Rechtsgrundlage für die Verarbeitung dieser Daten ist unser berechtigtes Interesse an der Beantwortung Ihres Anliegens gemäß Art. 6 Abs. 1 lit. f DSGVO. Zielt Ihre Kontaktierung auf den Abschluss eines Vertrages ab, so ist zusätzliche Rechtsgrundlage für die Verarbeitung Art. 6 Abs. 1 lit. b DSGVO. Ihre Daten werden nach abschließender Bearbeitung Ihrer Anfrage gelöscht. Dies ist der Fall, wenn sich aus den Umständen entnehmen lässt, dass der betroffene Sachverhalt abschließend geklärt ist und sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
                   </p>
-                </div>
+                    </div>
                 <div>
                   <h3 className="text-foreground font-semibold text-xl mb-3">3.3 Upload von Bilddateien im Rahmen der Kontaktaufnahme</h3>
                   <p className="mb-2">
@@ -185,7 +185,7 @@ const Datenschutz = () => {
                   <p>
                     Weitere Hinweise zum Datenschutz von Google finden sich hier: <a href="https://business.safety.google/intl/de/privacy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://business.safety.google/intl/de/privacy/</a>
                   </p>
-                </div>
+              </div>
                 <div>
                   <h3 className="text-foreground font-semibold text-xl mb-3">5.2 Google Web Fonts</h3>
                   <p className="mb-2">
@@ -199,7 +199,7 @@ const Datenschutz = () => {
                   </p>
                   <p className="mb-2">
                     Die Verarbeitung von personenbezogenen Daten im Zuge der Verbindungsaufnahme mit dem Anbieter der Schriftarten wird nur dann vollzogen, wenn Sie uns gemäß Art. 6 Abs. 1 lit. a DSGVO dazu Ihre ausdrückliche Einwilligung erteilt haben. Sie können Ihre erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie diesen Dienst über das auf der Webseite bereitgestellte „Cookie-Consent-Tool" deaktivieren. Falls Ihr Browser keine Web Fonts unterstützt, wird eine Standardschrift von Ihrem Computer genutzt.
-                  </p>
+                </p>
                   <p>
                     Für Datenübermittlungen in die USA hat sich der Anbieter dem EU-US-Datenschutzrahmen (EU-US Data Privacy Framework) angeschlossen, das auf Basis eines Angemessenheitsbeschlusses der Europäischen Kommission die Einhaltung des europäischen Datenschutzniveaus sicherstellt.
                   </p>
@@ -228,7 +228,7 @@ const Datenschutz = () => {
                   <h3 className="text-foreground font-semibold text-xl mb-3">6.2 WIDERSPRUCHSRECHT</h3>
                   <p className="mb-2 font-semibold">
                     WENN WIR IM RAHMEN EINER INTERESSENABWÄGUNG IHRE PERSONENBEZOGENEN DATEN AUFGRUND UNSERES ÜBERWIEGENDEN BERECHTIGTEN INTERESSES VERARBEITEN, HABEN SIE DAS JEDERZEITIGE RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER BESONDEREN SITUATION ERGEBEN, GEGEN DIESE VERARBEITUNG WIDERSPRUCH MIT WIRKUNG FÜR DIE ZUKUNFT EINZULEGEN.
-                  </p>
+                </p>
                   <p className="mb-2 font-semibold">
                     MACHEN SIE VON IHREM WIDERSPRUCHSRECHT GEBRAUCH, BEENDEN WIR DIE VERARBEITUNG DER BETROFFENEN DATEN. EINE WEITERVERARBEITUNG BLEIBT ABER VORBEHALTEN, WENN WIR ZWINGENDE SCHUTZWÜRDIGE GRÜNDE FÜR DIE VERARBEITUNG NACHWEISEN KÖNNEN, DIE IHRE INTERESSEN, GRUNDRECHTE UND GRUNDFREIHEITEN ÜBERWIEGEN, ODER WENN DIE VERARBEITUNG DER GELTENDMACHUNG, AUSÜBUNG ODER VERTEIDIGUNG VON RECHTSANSPRÜCHEN DIENT.
                   </p>

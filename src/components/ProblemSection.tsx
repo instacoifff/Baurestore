@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Droplets, Gauge, Bug } from "lucide-react";
-import iconImage from "@/assets/icon.png";
+import iconImage from "@/assets/icon.svg";
 
 const ProblemSection = () => {
   const problems = [
@@ -56,13 +56,10 @@ const ProblemSection = () => {
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 {problem.image ? (
-                  <img 
-                    src={problem.image} 
+                  <img
+                    src={problem.image}
                     alt={problem.title}
                     className="w-6 h-6 object-contain"
-                    style={{ 
-                      filter: 'brightness(0) saturate(100%) invert(11%) sepia(95%) saturate(1352%) hue-rotate(195deg) brightness(49%) contrast(100%)'
-                    }}
                   />
                 ) : (
                   <problem.icon className="w-6 h-6 text-primary" />

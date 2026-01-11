@@ -23,7 +23,7 @@ const ServicesSection = () => {
     },
     {
       icon: Wrench,
-      title: "Sanierungskonzepte",
+      title: "Sanierungskonzept",
       description: "Festlegung der Sanierungsziele, Entwicklung technischer Lösungsvarianten und Erstellung einer Kostenschätzung und Terminplanung als Entscheidungsgrundlage",
       image: serviceConcept,
       benefits: ["Lösungsvarianten", "Kostenübersicht", "Ablauf"],

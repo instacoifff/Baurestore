@@ -37,8 +37,11 @@ const SolutionSection = () => {
               Die Lösung
             </span>
             <h2 className="section-title mb-6">
-              <span className="text-primary">Alles aus einer Hand</span> –<br />
-              von der Schadenfeststellung bis zur Wiederherstellung
+              <span className="text-primary">Alles aus einer Hand</span> -<br />
+              von der<br />
+              Schadenfeststellung<br />
+              bis zur<br />
+              Wiederherstellung
             </h2>
             
             <p className="text-muted-foreground text-lg mb-8">

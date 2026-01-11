@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import buroImage from "@/assets/buro.png";
 import appartementsImage from "@/assets/appartements.png";
+import withoutTextVImage from "@/assets/without-text-v.png";
+import withoutTextImage from "@/assets/without-text.png";
 import {
     Dialog,
     DialogContent,
@@ -16,8 +18,9 @@ const projects = [
     {
         title: "Hausverwaltungen",
         image: appartementsImage,
+        dialogImage: withoutTextImage,
         details: {
-            title: "Hausverwaltung",
+            title: "Hausverwaltungen",
             description: "Die Betreuung mehrerer Objekte erfordert schnelle und effiziente Lösungen – wir kennen diese Herausforderung. Hausverwaltungen erwarten kurze Reaktionszeiten, klare Kommunikation und verlässliche Kostenübersichten, um Mieterausfälle und Folgeschäden zu vermeiden. BauRestore bietet präzise Schadenanalyse, fachgerechte Trocknung und nachhaltige Sanierung – alles aus einer Hand. Jeder Schritt wird transparent dokumentiert, damit Sie jederzeit den Überblick behalten.",
             expectations: [
                 "Schnelle Reaktionszeit",
@@ -30,6 +33,7 @@ const projects = [
     {
         title: "Versicherungen",
         image: buroImage,
+        dialogImage: withoutTextVImage,
         details: {
             title: "Versicherungen",
             description: "Wir wissen, dass Versicherungen auf detaillierte und nachvollziehbare Schadensdokumentation angewiesen sind, um Fälle korrekt zu bewerten und effizient zu regulieren. Deshalb liefern wir strukturierte Berichte, die alle relevanten Informationen enthalten – von der Schadenanalyse bis zur Sanierung. Unser Ziel: klare Prozesse, verlässliche Daten und eine reibungslosere Regulierung.",
@@ -173,7 +177,7 @@ const ProjectsSection = () => {
                     <DialogContent className="max-w-4xl w-[95vw] sm:w-full h-[95vh] sm:h-[90vh] max-h-[95vh] sm:max-h-[90vh] overflow-hidden p-0 flex flex-col md:flex-row">
                         <div className="w-full md:flex-1 aspect-[4/3] md:aspect-auto md:h-full h-auto max-h-[40vh] sm:max-h-[50vh] md:max-h-full overflow-hidden relative flex-shrink-0">
                             <img
-                                src={project.image}
+                                src={project.dialogImage || project.image}
                                 alt={project.details.title}
                                 className="w-full h-full object-cover"
                             />

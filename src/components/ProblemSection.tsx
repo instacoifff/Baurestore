@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Droplets, Home, Bug } from "lucide-react";
+import { Droplets, Gauge, Bug } from "lucide-react";
 
 const ProblemSection = () => {
   const problems = [
@@ -9,7 +9,7 @@ const ProblemSection = () => {
       description: "Wasserschäden entstehen oft plötzlich – durch Rohrbrüche, undichte Leitungen oder Überschwemmungen. Wir setzen auf präzise Leckortung und fachlich fundierte Ursachenanalyse, um den Schaden zuverlässig einzugrenzen. Anschließend erfolgt die fachgerechte Trocknung und Sanierung, damit Ihre Immobilie nachhaltig geschützt bleibt. Mit unserer Fachexpertise und transparenter Dokumentation sorgen wir für Sicherheit und Werterhalt.",
     },
     {
-      icon: Home,
+      icon: Gauge,
       title: "Feuchteschaden",
       description: "Feuchtigkeitsschäden entwickeln sich meist schleichend – durch undichte Dächer, mangelhafte Abdichtungen oder Kondensation. Wir analysieren die Ursachen präzise und leiten die passenden Maßnahmen ein: von der fachgerechten Trocknung bis zur nachhaltigen Sanierung. Unsere Fachexpertise garantiert eine Lösung, die zukünftige Schäden verhindert und den Wert Ihrer Immobilie langfristig sichert.",
     },

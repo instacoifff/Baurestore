@@ -121,7 +121,11 @@ const HeroSection = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight overflow-visible w-full"
             >
               <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent overflow-visible pr-8 sm:pr-12 lg:pr-16">
-                <span className="whitespace-nowrap inline-block">Ingenieurdienstleistungen</span> für Bauschäden & <span className="whitespace-nowrap inline-block">Sanierungsmanagement.</span>
+                <span className="whitespace-nowrap inline-block">Ingenieurdienstleistungen</span>
+                <br />
+                <span className="whitespace-nowrap inline-block">für Bauschäden &</span>
+                <br />
+                <span className="whitespace-nowrap inline-block">Sanierungsmanagement</span>
               </span>
             </motion.h1>
 

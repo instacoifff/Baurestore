@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Droplets, Gauge, Bug } from "lucide-react";
-import feuchteschadenImage from "@/assets/feuchteschaden.png";
+import iconImage from "@/assets/icon.png";
 
 const ProblemSection = () => {
   const problems = [
@@ -11,7 +11,7 @@ const ProblemSection = () => {
     },
     {
       icon: Gauge,
-      image: feuchteschadenImage,
+      image: iconImage,
       title: "Feuchteschaden",
       description: "Feuchtigkeitsschäden entwickeln sich meist schleichend – durch undichte Dächer, mangelhafte Abdichtungen oder Kondensation. Wir analysieren die Ursachen präzise und leiten die passenden Maßnahmen ein: von der fachgerechten Trocknung bis zur nachhaltigen Sanierung. Unsere Fachexpertise garantiert eine Lösung, die zukünftige Schäden verhindert und den Wert Ihrer Immobilie langfristig sichert.",
     },
@@ -59,7 +59,10 @@ const ProblemSection = () => {
                   <img 
                     src={problem.image} 
                     alt={problem.title}
-                    className="w-6 h-6 object-contain brightness-0 saturate-100 invert-[27%] sepia-[51%] saturate-[2878%] hue-rotate-[194deg] brightness-[104%] contrast-[97%]"
+                    className="w-6 h-6 object-contain"
+                    style={{ 
+                      filter: 'brightness(0) saturate(100%) invert(11%) sepia(95%) saturate(1352%) hue-rotate(195deg) brightness(49%) contrast(100%)'
+                    }}
                   />
                 ) : (
                   <problem.icon className="w-6 h-6 text-primary" />

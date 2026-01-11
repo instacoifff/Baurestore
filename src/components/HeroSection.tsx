@@ -118,14 +118,12 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.heading, duration: 0.6, ease: "easeOut" }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight overflow-visible w-full"
+              className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-[1.2] overflow-visible w-full"
             >
-              <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent overflow-visible pr-8 sm:pr-12 lg:pr-16">
-                <span className="whitespace-nowrap inline-block">Ingenieurdienstleistungen</span>
-                <br />
-                <span className="whitespace-nowrap inline-block">für Bauschäden &</span>
-                <br />
-                <span className="whitespace-nowrap inline-block">Sanierungsmanagement</span>
+              <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent overflow-visible py-2 pr-4 sm:pr-6 lg:pr-8 break-words sm:break-normal">
+                <span className="block sm:inline-block hyphens-auto">Ingenieurdienstleistungen</span>{" "}
+                <span className="block sm:inline-block">für Bauschäden &</span>{" "}
+                <span className="block sm:inline-block hyphens-auto text-balance">Sanierungsmanagement</span>
               </span>
             </motion.h1>
 
@@ -133,7 +131,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.description, duration: 0.6, ease: "easeOut" }}
-              className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl"
+              className="text-lg md:text-xl text-foreground/90 mb-8 leading-relaxed max-w-xl"
             >
               Mit Ingenieur-Expertise sind wir Ihr verlässlicher Partner für
               professionelle Schadenanalyse, präzise Leckortung, fachgerechte

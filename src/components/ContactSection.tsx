@@ -55,6 +55,7 @@ const ContactSection = () => {
       if (response.ok) {
         setIsSubmitted(true);
         setImages([]); // Clear images after submission
+        e.currentTarget.reset(); // Reset form fields
         toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
       } else {
         const errorText = await response.text();
@@ -100,191 +101,200 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Kontakt
-            </span>
-            <h2 className="section-title mb-4">
-              Professionelle Schadensanalyse anfragen
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Wir reagieren umgehend und melden uns so schnell wie möglich bei Ihnen.
-            </p>
-
             {isSubmitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-card rounded-xl p-8 text-center border border-border"
+                className="bg-card rounded-xl p-8 md:p-12 text-center border border-border shadow-card min-h-[400px] flex flex-col items-center justify-center"
               >
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-accent" />
+                <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="w-10 h-10 text-accent" />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                <h3 className="font-display text-2xl font-semibold text-foreground mb-4">
                   Vielen Dank für Ihre Anfrage!
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-lg max-w-md mx-auto">
                   Wir haben Ihre Nachricht erhalten und werden uns
                   schnellstmöglich bei Ihnen melden.
                 </p>
+                <Button
+                  variant="outline"
+                  className="mt-8"
+                  onClick={() => setIsSubmitted(false)}
+                >
+                  Neue Nachricht senden
+                </Button>
               </motion.div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-card rounded-xl p-6 md:p-8 border border-border shadow-card"
-                name="contact"
-                data-netlify="true"
-                encType="multipart/form-data"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="recipient-email" value="azizafif933@gmail.com" />
-                <p className="hidden">
-                  <label>
-                    Don't fill this out if you're human: <input name="bot-field" />
-                  </label>
+              <>
+                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                  Kontakt
+                </span>
+                <h2 className="section-title mb-4">
+                  Professionelle Schadensanalyse anfragen
+                </h2>
+                <p className="text-muted-foreground text-lg mb-8">
+                  Wir reagieren umgehend und melden uns so schnell wie möglich bei Ihnen.
                 </p>
-                <div className="grid sm:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                      Name *
+
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-card rounded-xl p-6 md:p-8 border border-border shadow-card"
+                  name="contact"
+                  data-netlify="true"
+                  encType="multipart/form-data"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="recipient-email" value="azizafif933@gmail.com" />
+                  <p className="hidden">
+                    <label>
+                      Don't fill this out if you're human: <input name="bot-field" />
                     </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      placeholder="Ihr Name"
-                      required
-                      className="bg-background"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                      Telefon *
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="+49 ..."
-                      required
-                      className="bg-background"
-                    />
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    E-Mail *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="ihre@email.de"
-                    required
-                    className="bg-background"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="damage-type" className="block text-sm font-medium text-foreground mb-2">
-                    Art des Schadens
-                  </label>
-                  <Select name="damage-type">
-                    <SelectTrigger className="bg-background">
-                      <SelectValue placeholder="Bitte auswählen" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="water">Wasserschaden</SelectItem>
-                      <SelectItem value="moisture">Feuchtigkeit / Schimmel</SelectItem>
-                      <SelectItem value="structural">Sanierung</SelectItem>
-                      <SelectItem value="consultation">Beratung</SelectItem>
-                      <SelectItem value="other">Sonstiges</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Ihre Nachricht
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Beschreiben Sie kurz Ihr Anliegen..."
-                    rows={4}
-                    className="bg-background resize-none"
-                  />
-                </div>
-
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Bilder vom Schaden (Optional)
-                  </label>
-                  <div
-                    className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-border border-dashed rounded-xl hover:border-primary/50 transition-colors cursor-pointer group bg-background"
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    <div className="space-y-1 text-center">
-                      <Upload className="mx-auto h-12 w-12 text-muted-foreground group-hover:text-primary transition-colors" />
-                      <div className="flex text-sm text-muted-foreground">
-                        <span className="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
-                          Bilder hochladen
-                        </span>
-                        <p className="pl-1">oder herüberziehen</p>
-                      </div>
-                      <p className="text-xs text-muted-foreground">PNG, JPG, GIF bis zu 10MB</p>
+                  </p>
+                  <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                        Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        placeholder="Ihr Name"
+                        required
+                        className="bg-background"
+                      />
                     </div>
-                    <input
-                      id="image-upload"
-                      ref={fileInputRef}
-                      name="image-upload"
-                      type="file"
-                      className="sr-only"
-                      multiple
-                      accept="image/*"
-                      onChange={handleImageChange}
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                        Telefon *
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="+49 ..."
+                        required
+                        className="bg-background"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                      E-Mail *
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="ihre@email.de"
+                      required
+                      className="bg-background"
                     />
                   </div>
 
-                  {images.length > 0 && (
-                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-4">
-                      {images.map((file, index) => (
-                        <div key={index} className="relative group aspect-square rounded-lg overflow-hidden border border-border">
-                          <img
-                            src={file.preview}
-                            alt={`Preview ${index}`}
-                            className="w-full h-full object-cover"
-                          />
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              removeImage(index);
-                            }}
-                            className="absolute top-1 right-1 p-1 bg-destructive text-destructive-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <X className="w-3 h-3" />
-                          </button>
+                  <div className="mb-4">
+                    <label htmlFor="damage-type" className="block text-sm font-medium text-foreground mb-2">
+                      Art des Schadens
+                    </label>
+                    <Select name="damage-type">
+                      <SelectTrigger className="bg-background">
+                        <SelectValue placeholder="Bitte auswählen" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="water">Wasserschaden</SelectItem>
+                        <SelectItem value="moisture">Feuchtigkeit / Schimmel</SelectItem>
+                        <SelectItem value="structural">Sanierung</SelectItem>
+                        <SelectItem value="consultation">Beratung</SelectItem>
+                        <SelectItem value="other">Sonstiges</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                      Ihre Nachricht
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+                      rows={4}
+                      className="bg-background resize-none"
+                    />
+                  </div>
+
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Bilder vom Schaden (Optional)
+                    </label>
+                    <div
+                      className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-border border-dashed rounded-xl hover:border-primary/50 transition-colors cursor-pointer group bg-background"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <div className="space-y-1 text-center">
+                        <Upload className="mx-auto h-12 w-12 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <div className="flex text-sm text-muted-foreground">
+                          <span className="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
+                            Bilder hochladen
+                          </span>
+                          <p className="pl-1">oder herüberziehen</p>
                         </div>
-                      ))}
+                        <p className="text-xs text-muted-foreground">PNG, JPG, GIF bis zu 10MB</p>
+                      </div>
+                      <input
+                        id="image-upload"
+                        ref={fileInputRef}
+                        name="image-upload"
+                        type="file"
+                        className="sr-only"
+                        multiple
+                        accept="image/*"
+                        onChange={handleImageChange}
+                      />
                     </div>
-                  )}
-                </div>
 
-                <Button variant="cta" size="lg" className="w-full" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    "Wird gesendet..."
-                  ) : (
-                    <>
-                      Anfrage absenden
-                      <Send className="w-4 h-4 ml-2" />
-                    </>
-                  )}
-                </Button>
+                    {images.length > 0 && (
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 mt-4">
+                        {images.map((file, index) => (
+                          <div key={index} className="relative group aspect-square rounded-lg overflow-hidden border border-border">
+                            <img
+                              src={file.preview}
+                              alt={`Preview ${index}`}
+                              className="w-full h-full object-cover"
+                            />
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                removeImage(index);
+                              }}
+                              className="absolute top-1 right-1 p-1 bg-destructive text-destructive-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
 
-                <p className="text-xs text-muted-foreground text-center mt-4">
-                  Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.
-                </p>
-              </form>
+                  <Button variant="cta" size="lg" className="w-full" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      "Wird gesendet..."
+                    ) : (
+                      <>
+                        Anfrage absenden
+                        <Send className="w-4 h-4 ml-2" />
+                      </>
+                    )}
+                  </Button>
+
+                  <p className="text-xs text-muted-foreground text-center mt-4">
+                    Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.
+                  </p>
+                </form>
+              </>
             )}
           </motion.div>
 

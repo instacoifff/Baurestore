@@ -39,13 +39,32 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setImages([]); // Clear images after submission
-    toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
+    // Add images to form data if any
+    images.forEach((file, index) => {
+      formData.append(`file-${index}`, file);
+    });
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setImages([]); // Clear images after submission
+        toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Netlify Form submission error:", error);
+      toast.error("Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es später erneut.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -108,7 +127,15 @@ const ContactSection = () => {
                 </p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-card rounded-xl p-6 md:p-8 border border-border shadow-card">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-card rounded-xl p-6 md:p-8 border border-border shadow-card"
+                name="contact"
+                data-netlify="true"
+                encType="multipart/form-data"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="recipient-email" value="azizafif933@gmail.com" />
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">

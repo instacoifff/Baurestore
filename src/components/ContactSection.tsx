@@ -57,7 +57,8 @@ const ContactSection = () => {
         setImages([]); // Clear images after submission
         toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
       } else {
-        throw new Error("Form submission failed");
+        const errorText = await response.text();
+        throw new Error(`Form submission failed: ${response.status} ${response.statusText} - ${errorText}`);
       }
     } catch (error) {
       console.error("Netlify Form submission error:", error);
@@ -136,6 +137,11 @@ const ContactSection = () => {
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="recipient-email" value="azizafif933@gmail.com" />
+                <p className="hidden">
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </p>
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">

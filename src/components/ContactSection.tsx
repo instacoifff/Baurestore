@@ -39,11 +39,14 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-    // Add images to form data if any
-    images.forEach((file, index) => {
-      formData.append(`file-${index}`, file);
+    // Clear the existing image-upload entries (from the state-less input)
+    // and replace them with our source-of-truth 'images' state
+    formData.delete('image-upload');
+    images.forEach((file) => {
+      formData.append('image-upload', file);
     });
 
     try {
@@ -55,14 +58,15 @@ const ContactSection = () => {
       if (response.ok) {
         setIsSubmitted(true);
         setImages([]); // Clear images after submission
-        e.currentTarget.reset(); // Reset form fields
+        form.reset(); // Reset form fields
         toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
       } else {
         const errorText = await response.text();
-        throw new Error(`Form submission failed: ${response.status} ${response.statusText} - ${errorText}`);
+        console.error("Form submission failed:", response.status, response.statusText, errorText);
+        throw new Error(`Netlify returned ${response.status}: ${response.statusText}`);
       }
     } catch (error) {
-      console.error("Netlify Form submission error:", error);
+      console.error("Submission error:", error);
       toast.error("Es gab ein Problem beim Senden Ihrer Anfrage. Bitte versuchen Sie es später erneut.");
     } finally {
       setIsSubmitting(false);

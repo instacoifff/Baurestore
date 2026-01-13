@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/i.jpg";
+import heroImageDesktop from "@/assets/i.png";
+import heroImageMobile from "@/assets/hero-mobile.jpg";
 
 // Animation variants for better performance
 const orbVariants: Variants = {
@@ -52,15 +53,26 @@ const HeroSection = () => {
   );
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: '150%',
-      }}
-      aria-label="Hero section"
-    >
+    <>
+      <style>{`
+        #hero {
+          --hero-mobile: url(${heroImageMobile});
+          --hero-desktop: url(${heroImageDesktop});
+          background-image: var(--hero-mobile);
+          background-size: cover;
+        }
+        @media (min-width: 768px) {
+          #hero {
+            background-image: var(--hero-desktop);
+            background-size: cover;
+          }
+        }
+      `}</style>
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-center bg-no-repeat"
+        aria-label="Hero section"
+      >
       {/* Background Overlay */}
       <div
         className="absolute inset-0 bg-gradient-to-br from-background/25 via-background/25 to-background/25"
@@ -202,6 +214,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

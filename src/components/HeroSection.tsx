@@ -54,9 +54,10 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-cover bg-center bg-no-repeat"
+      className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${heroImage})`,
+        backgroundSize: '150%',
       }}
       aria-label="Hero section"
     >

@@ -59,7 +59,7 @@ const HeroSection = () => {
           --hero-mobile: url(${heroImageMobile});
           --hero-desktop: url(${heroImageDesktop});
           background-image: var(--hero-mobile);
-          background-size: cover;
+          background-size: 100% 100%;
         }
         @media (min-width: 768px) {
           #hero {
@@ -70,7 +70,7 @@ const HeroSection = () => {
       `}</style>
       <section
         id="hero"
-        className="relative min-h-screen flex items-center pt-20 overflow-y-auto bg-center bg-no-repeat"
+        className="relative min-h-[35vh] flex items-center pt-12 overflow-y-auto bg-center bg-no-repeat"
         aria-label="Hero section"
       >
       {/* Background Overlay */}
@@ -118,20 +118,20 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 py-16 md:py-24 flex items-center min-h-[calc(100vh-5rem)] w-full overflow-visible">
+      <div className="relative z-10 py-6 md:py-8 flex items-center w-full overflow-visible">
         <div className="section-container w-full">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-5xl w-full pb-8 overflow-visible"
+            className="max-w-5xl w-full pb-2 overflow-visible"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.heading, duration: 0.6, ease: "easeOut" }}
-              className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-[1.2] overflow-visible w-full"
+              className="text-2xl md:text-5xl lg:text-7xl font-bold mb-4 leading-[1.2] overflow-visible w-full"
             >
               <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent overflow-visible py-2 pr-4 sm:pr-6 lg:pr-8 break-words sm:break-normal">
                 <span className="block sm:inline-block hyphens-auto">Ingenieurdienstleistungen</span>{" "}
@@ -144,7 +144,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.description, duration: 0.6, ease: "easeOut" }}
-              className="text-lg md:text-xl text-foreground/90 mb-8 leading-relaxed max-w-xl"
+              className="text-sm md:text-xl text-foreground/90 mb-6 leading-relaxed max-w-xl"
             >
               Mit Ingenieur-Expertise sind wir Ihr verlässlicher Partner für
               professionelle Schadenanalyse, präzise Leckortung, fachgerechte
@@ -159,12 +159,12 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.cta, duration: 0.6, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex flex-col sm:flex-row gap-4 mb-6"
             >
               <Button
                 variant="cta"
                 size="lg"
-                className="group shadow-lg hover:shadow-xl transition-all"
+                className="group shadow-lg hover:shadow-xl transition-all text-sm md:text-base"
                 asChild
               >
                 <a href="#contact" aria-label="Kontaktformular öffnen">
@@ -175,7 +175,7 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 hover:bg-primary/5 hover:border-primary/50 transition-all"
+                className="border-2 hover:bg-primary/5 hover:border-primary/50 transition-all text-sm md:text-base"
                 asChild
               >
                 <a href="#services" aria-label="Zu unseren Leistungen scrollen">
@@ -189,7 +189,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: ANIMATION_DELAYS.stats, duration: 0.6, ease: "easeOut" }}
-              className="grid grid-cols-3 gap-4 mb-8"
+              className="grid grid-cols-3 gap-4 mb-0"
             >
               {stats.map((stat, index) => (
                 <motion.div
@@ -203,7 +203,7 @@ const HeroSection = () => {
                   }}
                   className="text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all"
                 >
-                  <p className="text-2xl md:text-3xl font-bold text-primary mb-1" aria-label={`${stat.value} ${stat.label}`}>
+                  <p className="text-xl md:text-3xl font-bold text-primary mb-1" aria-label={`${stat.value} ${stat.label}`}>
                     {stat.value}
                   </p>
                   <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>

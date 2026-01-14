@@ -1,4 +1,4 @@
-# BauRestore Solutions
+# BauRestore - Ingenieurdienstleistungen für Bauschäden und Sanierungsmanagement
 
 ## Project info
 

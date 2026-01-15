@@ -53,42 +53,16 @@ const HeroSection = () => {
   );
 
   return (
-    <>
-      <style>{`
-        #hero {
-          --hero-mobile: url(${heroImageMobile});
-          --hero-desktop: url(${heroImageDesktop});
-          background-image: var(--hero-mobile);
-          background-size: 100% 100%;
-        }
-        @media (min-width: 768px) {
-          #hero {
-            background-image: var(--hero-desktop);
-            background-size: cover;
-          }
-        }
-      `}</style>
-      <section
-        id="hero"
-        className="relative min-h-[35vh] flex items-center pt-12 overflow-y-auto bg-center bg-no-repeat"
-        aria-label="Hero section"
-      >
-      {/* Background Overlay */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-background/25 via-background/25 to-background/25"
-        aria-hidden="true"
-      />
-      {/* Animated Background Gradient */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-primary/25 via-secondary/25 via-background/25 to-background/25"
-        aria-hidden="true"
-      />
+    <section
+      id="hero"
+      className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-background"
+      aria-label="Hero section"
+    >
+      {/* Background Overlay & Gradients */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" aria-hidden="true" />
 
       {/* Animated Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        aria-hidden="true"
-      >
+      <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
         <div
           className="absolute inset-0"
           style={{
@@ -101,120 +75,124 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Floating Orbs - Optimized with variants */}
+      {/* Floating Orbs */}
       <motion.div
-        className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl will-change-transform"
+        className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl will-change-transform"
         variants={orbVariants}
         initial="animate"
         animate="animate"
         aria-hidden="true"
       />
       <motion.div
-        className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl will-change-transform"
+        className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl will-change-transform"
         variants={orbVariants2}
         initial="animate"
         animate="animate"
         aria-hidden="true"
       />
 
-      {/* Content */}
-      <div className="relative z-10 py-6 md:py-8 flex items-center w-full overflow-visible">
-        <div className="section-container w-full">
-          {/* Text Content */}
+      <div className="section-container relative z-10">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+          {/* Main Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-5xl w-full pb-2 overflow-visible"
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full flex flex-col items-center"
           >
+            {/* Header Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-medium mb-6"
+            >
+              Meistergeführter Ingenieurbetrieb
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.heading, duration: 0.6, ease: "easeOut" }}
-              className="text-2xl md:text-5xl lg:text-7xl font-bold mb-4 leading-[1.2] overflow-visible w-full"
+              transition={{ delay: ANIMATION_DELAYS.heading, duration: 0.8, ease: "easeOut" }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
             >
-              <span className="block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent overflow-visible py-2 pr-4 sm:pr-6 lg:pr-8 break-words sm:break-normal">
-                <span className="block sm:inline-block hyphens-auto">Ingenieurdienstleistungen</span>{" "}
-                <span className="block sm:inline-block">für Bauschäden &</span>{" "}
-                <span className="block sm:inline-block hyphens-auto text-balance">Sanierungsmanagement</span>
+              <span className="inline-block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent pb-2 text-balance">
+                Ingenieurdienstleistungen für Bauschäden & Sanierungsmanagement
               </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.description, duration: 0.6, ease: "easeOut" }}
-              className="text-sm md:text-xl text-foreground/90 mb-6 leading-relaxed max-w-xl"
+              transition={{ delay: ANIMATION_DELAYS.description, duration: 0.8, ease: "easeOut" }}
+              className="text-base md:text-xl text-muted-foreground mb-10 max-w-3xl leading-relaxed text-balance"
             >
-              Mit Ingenieur-Expertise sind wir Ihr verlässlicher Partner für
-              professionelle Schadenanalyse, präzise Leckortung, fachgerechte
-              Trocknung, nachhaltige und fachgerechte Sanierung sowie
-              verlässliche Dokumentation von Wasserschäden,
-              Feuchtigkeitsschäden und Schimmelbefall – alles aus einer Hand,
-              zuverlässig und transparent.
+              Ihr verlässlicher Partner für professionelle Schadenanalyse, Leckortung und
+              nachhaltige Sanierung von Wasserschäden – alles aus einer Hand.
             </motion.p>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.cta, duration: 0.6, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4 mb-6"
+              transition={{ delay: ANIMATION_DELAYS.cta, duration: 0.8, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-4 mb-16 w-full sm:w-auto"
             >
               <Button
                 variant="cta"
                 size="lg"
-                className="group shadow-lg hover:shadow-xl transition-all text-sm md:text-base"
+                className="group shadow-xl hover:shadow-primary/20 transition-all px-8 h-14 rounded-2xl"
                 asChild
               >
-                <a href="#contact" aria-label="Kontaktformular öffnen">
+                <a href="#contact">
                   Jetzt Schaden melden
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 hover:bg-primary/5 hover:border-primary/50 transition-all text-sm md:text-base"
+                className="border-2 h-14 rounded-2xl px-8 hover:bg-secondary transition-all"
                 asChild
               >
-                <a href="#services" aria-label="Zu unseren Leistungen scrollen">
-                  Unsere Leistungen
-                </a>
+                <a href="#services">Unsere Leistungen</a>
               </Button>
             </motion.div>
 
-            {/* Stats Grid */}
+            {/* Featured Image with Rounded Corners */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.stats, duration: 0.6, ease: "easeOut" }}
-              className="grid grid-cols-3 gap-4 mb-0"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: ANIMATION_DELAYS.image, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white/10 group"
             >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    delay: ANIMATION_DELAYS.stats + 0.1 + index * 0.1,
-                    duration: 0.4,
-                    ease: "easeOut"
-                  }}
-                  className="text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all"
-                >
-                  <p className="text-xl md:text-3xl font-bold text-primary mb-1" aria-label={`${stat.value} ${stat.label}`}>
-                    {stat.value}
-                  </p>
-                  <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
-              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
+              <img
+                src={heroImageDesktop}
+                alt="Bau-Ingenieur bei der Arbeit"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+
+              {/* Stats Overlay on Image */}
+              <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 z-20 grid grid-cols-3 gap-4">
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: ANIMATION_DELAYS.stats + index * 0.1 }}
+                    className="p-3 md:p-6 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 text-white"
+                  >
+                    <p className="text-xl md:text-3xl font-bold mb-1">{stat.value}</p>
+                    <p className="text-[10px] md:text-xs uppercase tracking-widest opacity-80">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
-    </>
   );
 };
 

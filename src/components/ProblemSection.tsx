@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Droplets, Gauge, Bug } from "lucide-react";
-import iconImage from "@/assets/icon.svg";
+import { Droplets, Bug } from "lucide-react";
+import moistureIcon from "@/assets/moisture-damage.svg";
 
 const ProblemSection = () => {
   const problems = [
@@ -10,8 +10,8 @@ const ProblemSection = () => {
       description: "Wasserschäden entstehen oft plötzlich – durch Rohrbrüche, undichte Leitungen oder Überschwemmungen. Wir setzen auf präzise Leckortung und fachlich fundierte Ursachenanalyse, um den Schaden zuverlässig einzugrenzen. Anschließend erfolgt die fachgerechte Trocknung und Sanierung, damit Ihre Immobilie nachhaltig geschützt bleibt. Mit unserer Fachexpertise und transparenter Dokumentation sorgen wir für Sicherheit und Werterhalt.",
     },
     {
-      icon: Gauge,
-      image: iconImage,
+      icon: Droplets,
+      image: moistureIcon,
       title: "Feuchteschaden",
       description: "Feuchtigkeitsschäden entwickeln sich meist schleichend – durch undichte Dächer, mangelhafte Abdichtungen oder Kondensation. Wir analysieren die Ursachen präzise und leiten die passenden Maßnahmen ein: von der fachgerechten Trocknung bis zur nachhaltigen Sanierung. Unsere Fachexpertise garantiert eine Lösung, die zukünftige Schäden verhindert und den Wert Ihrer Immobilie langfristig sichert.",
     },
@@ -59,7 +59,7 @@ const ProblemSection = () => {
                   <img
                     src={problem.image}
                     alt={problem.title}
-                    className="w-6 h-6 object-contain"
+                    className="w-6 h-6 text-primary"
                   />
                 ) : (
                   <problem.icon className="w-6 h-6 text-primary" />

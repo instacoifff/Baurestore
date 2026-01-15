@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroZoomed from "@/assets/hero-zoomed.png";
+import heroInspection2 from "@/assets/hero-inspection-2.jpg";
 
 // Animation variants for better performance
 const orbVariants: Variants = {
@@ -82,26 +82,21 @@ const HeroSection = () => {
           {/* Background Image with Fading Overlay */}
           <div className="absolute inset-0 z-0">
             <img
-              src={heroZoomed}
-              alt="Meistergeführter Ingenieurbetrieb"
+              src={heroInspection2}
+              alt="Baurestore Ingenieurdienstleistungen"
               className="w-full h-full object-cover object-[center_right] transition-transform duration-1000 group-hover:scale-105"
             />
+            {/* Overall White Overlay for better text clarity */}
+            <div className="absolute inset-0 bg-white/40 z-10 pointer-events-none" />
+
             {/* White side gradients */}
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white/80 via-white/20 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white/80 via-white/20 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-white via-white/40 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white/60 via-white/20 to-transparent z-10 pointer-events-none" />
           </div>
 
           {/* Content Overlay */}
           <div className="absolute inset-0 z-20 flex flex-col items-start justify-center text-left px-6 sm:px-12 md:pl-20 max-w-4xl lg:max-w-5xl pointer-events-none">
-            {/* Header Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[10px] sm:text-xs md:text-sm font-semibold mb-4 sm:mb-8 pointer-events-auto"
-            >
-              Meistergeführter Ingenieurbetrieb
-            </motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, x: -20 }}
@@ -142,7 +137,7 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-primary/5 border-primary/20 text-primary hover:bg-primary/10 transition-all duration-300 px-6 sm:px-10 py-5 sm:py-7 text-sm sm:text-base font-bold h-12 sm:h-16 rounded-2xl shadow-lg"
+                className="bg-white border-primary/20 text-primary hover:bg-white/90 transition-all duration-300 px-6 sm:px-10 py-5 sm:py-7 text-sm sm:text-base font-bold h-12 sm:h-16 rounded-2xl shadow-lg"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Unsere Leistungen

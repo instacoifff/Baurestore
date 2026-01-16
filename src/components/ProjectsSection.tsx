@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, X } from "lucide-react";
 import buroImage from "@/assets/buro.png";
 import appartementsImage from "@/assets/appartements.png";
 import withoutTextVImage from "@/assets/without-text-v.png";
@@ -12,7 +12,15 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
+import {
+    Drawer,
+    DrawerContent,
+    DrawerDescription,
+    DrawerHeader,
+    DrawerTitle,
+} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const projects = [
     {
@@ -47,13 +55,128 @@ const projects = [
     },
 ];
 
+const ProjectDetailsContent = ({ project, onContactClick, onClose, isDesktop }: { project: any, onContactClick: () => void, onClose: () => void, isDesktop: boolean }) => (
+    <div className="flex flex-col md:flex-row h-full font-sans relative overflow-hidden">
+        {/* Close Button Overlay */}
+        <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-[100] p-2 rounded-full bg-black/30 hover:bg-black/50 backdrop-blur-md text-white transition-all shadow-lg border border-white/20 active:scale-95"
+            aria-label="Close"
+        >
+            <X className="w-5 h-5" />
+        </button>
+
+        {/* Image Section */}
+        <div className="w-full md:w-[45%] lg:w-[40%] md:h-full relative flex-shrink-0 h-64 sm:h-80 md:max-h-full overflow-hidden">
+            {!isDesktop && (
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 opacity-90" />
+            )}
+            <img
+                src={project.dialogImage || project.image}
+                alt={project.details.title}
+                className="w-full h-full object-cover object-center"
+            />
+        </div>
+
+        {/* Content Section */}
+        <div className="flex-1 flex flex-col h-full bg-background relative z-20 -mt-10 md:mt-0 rounded-t-[2.5rem] md:rounded-none shadow-[0_-20px_50px_rgba(0,0,0,0.15)] md:shadow-none border-t border-white/40 md:border-none overflow-hidden">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-6 sm:p-10 md:p-12 lg:p-14">
+                <DialogHeader className="p-0 text-left space-y-5">
+                    <div className="w-16 h-1.5 bg-primary/15 rounded-full mb-2 mx-auto md:hidden" />
+                    <div className="hidden md:block w-16 h-1.5 bg-primary rounded-full mb-4" />
+
+                    <DialogTitle className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-primary tracking-tight leading-tight">
+                        {project.details.title}
+                    </DialogTitle>
+
+                    <DialogDescription className="text-base sm:text-lg lg:text-xl leading-relaxed text-muted-foreground/90 font-medium">
+                        {project.details.description}
+                    </DialogDescription>
+                </DialogHeader>
+
+                <div className="mt-10 sm:mt-12">
+                    <h4 className="text-sm font-bold text-foreground uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                        <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+                        Ihre Vorteile
+                    </h4>
+                    <ul className="grid gap-4 sm:gap-5">
+                        {project.details.expectations.map((expectation: string, idx: number) => (
+                            <li key={idx} className="flex items-start gap-5 p-5 rounded-[1.5rem] bg-secondary/30 border border-secondary/50 hover:bg-secondary/60 hover:border-primary/20 transition-all duration-300">
+                                <div className="mt-1 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <span className="text-foreground font-semibold text-sm sm:text-base lg:text-lg leading-snug">{expectation}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+
+            <div className="p-6 sm:p-10 md:p-12 bg-background/95 backdrop-blur-xl sticky bottom-0 border-t border-border/40 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+                <Button
+                    variant="cta"
+                    size="lg"
+                    className="w-full group shadow-2xl shadow-primary/20 h-16 text-lg rounded-2xl transition-all hover:scale-[1.02] active:scale-95"
+                    onClick={onContactClick}
+                >
+                    Jetzt Kontakt aufnehmen
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                </Button>
+            </div>
+        </div>
+    </div>
+);
+
 const ProjectsSection = () => {
     const [openDialog, setOpenDialog] = useState<number | null>(null);
+    const isDesktop = useMediaQuery("(min-width: 1024px)");
+
+    // Synchronize openDialog state with browser history for Back button support
+    useEffect(() => {
+        const handlePopState = (event: PopStateEvent) => {
+            if (openDialog !== null) {
+                setOpenDialog(null);
+            }
+        };
+
+        if (openDialog !== null) {
+            // Use current hash to prevent jumping to top/home on close
+            window.history.pushState({ dialogOpen: true }, "", window.location.hash || "#partner");
+            window.addEventListener("popstate", handlePopState);
+        }
+
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
+    }, [openDialog]);
+
+    const handleClose = () => {
+        if (openDialog !== null) {
+            setOpenDialog(null);
+            // If the current history entry is our dialog state, pop it to go back to previous position
+            if (window.history.state?.dialogOpen) {
+                window.history.back();
+            }
+        }
+    };
 
     const handleContactClick = () => {
         setOpenDialog(null);
+
+        // 1. Pop the history if needed
+        if (window.history.state?.dialogOpen) {
+            window.history.back();
+        }
+
+        // 2. Longer delay to ensure history and UI state have fully stabilized
         setTimeout(() => {
-            const contactSection = document.querySelector("#contact");
+            // 3. Force the URL hash to #kontakt immediately
+            window.location.hash = "kontakt";
+
+            // 4. Perform the scroll
+            const contactSection = document.querySelector("#kontakt");
             if (contactSection) {
                 const headerHeight = 80;
                 const targetPosition = contactSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
@@ -62,11 +185,11 @@ const ProjectsSection = () => {
                     behavior: "smooth",
                 });
             }
-        }, 100);
+        }, 350); // Increased delay for stability
     };
 
     return (
-        <section id="projekte" className="section-padding bg-muted/30">
+        <section id="partner" className="section-padding bg-muted/30">
             <div className="section-container">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <motion.div
@@ -94,7 +217,7 @@ const ProjectsSection = () => {
                         transition={{ duration: 0.5 }}
                     >
                         <a
-                            href="#contact"
+                            href="#kontakt"
                             className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all underline-offset-4 hover:underline"
                         >
                             Termin vereinbaren <ArrowRight className="w-5 h-5" />
@@ -168,56 +291,45 @@ const ProjectsSection = () => {
                 </motion.div>
             </div>
 
+            {/* Responsive Dialog / Drawer */}
             {projects.map((project, index) => (
-                <Dialog
-                    key={index}
-                    open={openDialog === index}
-                    onOpenChange={(open) => setOpenDialog(open ? index : null)}
-                >
-                    <DialogContent className="max-w-4xl w-[95vw] sm:w-full h-[95vh] sm:h-[90vh] max-h-[95vh] sm:max-h-[90vh] overflow-hidden p-0 flex flex-col md:flex-row">
-                        <div className="w-full md:flex-1 aspect-[4/3] md:aspect-auto md:h-full h-auto max-h-[40vh] sm:max-h-[50vh] md:max-h-full overflow-hidden relative flex-shrink-0">
-                            <img
-                                src={project.dialogImage || project.image}
-                                alt={project.details.title}
-                                className="w-full h-full object-cover"
+                isDesktop ? (
+                    <Dialog
+                        key={index}
+                        open={openDialog === index}
+                        onOpenChange={(open) => !open && handleClose()}
+                    >
+                        <DialogContent className="max-w-6xl w-[92vw] h-[85vh] overflow-hidden p-0 gap-0 border-none rounded-[3rem] shadow-elevation-2xl shadow-primary/20 [&>button]:hidden">
+                            <ProjectDetailsContent
+                                project={project}
+                                onContactClick={handleContactClick}
+                                onClose={handleClose}
+                                isDesktop={true}
                             />
-                        </div>
-                        <div className="p-4 sm:p-6 overflow-y-auto md:w-96 flex-shrink-0 md:h-full flex-1">
-                            <DialogHeader>
-                                <DialogTitle className="text-2xl font-display font-bold">
-                                    {project.details.title}
-                                </DialogTitle>
-                                <DialogDescription className="text-base leading-relaxed pt-4">
-                                    {project.details.description}
-                                </DialogDescription>
-                            </DialogHeader>
-                            <div className="mt-6">
-                                <h4 className="text-lg font-semibold mb-4">
-                                    Erwartungen, die wir erfüllen:
-                                </h4>
-                                <ul className="space-y-3">
-                                    {project.details.expectations.map((expectation, idx) => (
-                                        <li key={idx} className="flex items-start gap-3">
-                                            <span className="text-primary font-bold mt-1">✔</span>
-                                            <span className="text-muted-foreground">{expectation}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                        </DialogContent>
+                    </Dialog>
+                ) : (
+                    <Drawer
+                        key={index}
+                        open={openDialog === index}
+                        onOpenChange={(open) => !open && handleClose()}
+                    >
+                        <DrawerContent className="h-[96vh] focus:outline-none p-0 bg-transparent border-none">
+                            <DrawerHeader className="hidden">
+                                <DrawerTitle>{project.details.title}</DrawerTitle>
+                                <DrawerDescription>{project.details.description}</DrawerDescription>
+                            </DrawerHeader>
+                            <div className="h-full bg-background rounded-t-[2.5rem] overflow-hidden shadow-2xl w-full mx-auto">
+                                <ProjectDetailsContent
+                                    project={project}
+                                    onContactClick={handleContactClick}
+                                    onClose={handleClose}
+                                    isDesktop={false}
+                                />
                             </div>
-                            <div className="mt-8">
-                                <Button
-                                    variant="cta"
-                                    size="lg"
-                                    className="w-full group"
-                                    onClick={handleContactClick}
-                                >
-                                    Jetzt Kontakt aufnehmen
-                                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                </Button>
-                            </div>
-                        </div>
-                    </DialogContent>
-                </Dialog>
+                        </DrawerContent>
+                    </Drawer>
+                )
             ))}
         </section>
     );

@@ -36,7 +36,17 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section id="process" className="section-padding bg-background">
+    <section id="ablauf" className="section-padding bg-muted/30 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 opacity-[0.03]" aria-hidden="true">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="absolute top-0 left-0 w-full h-full bg-[url('/images/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+        ></motion.div>
+      </div>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +62,7 @@ const ProcessSection = () => {
             So arbeiten wir zusammen
           </h2>
           <p className="section-subtitle mx-auto">
-            Ein strukturierter Prozess für maximale Transparenz und Effizienz – 
+            Ein strukturierter Prozess für maximale Transparenz und Effizienz –
             von der ersten Kontaktaufnahme bis zur Projektabnahme.
           </p>
         </motion.div>

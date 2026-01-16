@@ -49,21 +49,26 @@ const ContactSection = () => {
       formData.append('image-upload', file);
     });
 
+    // Custom Node.js API endpoint
+    // In production, this should be relative '/api/contact' if served from same origin
+    // or the full URL of the backend.
+    const API_URL = import.meta.env.DEV ? "http://localhost:5000/api/contact" : "/api/contact";
+
     try {
-      const response = await fetch("/", {
+      const response = await fetch(API_URL, {
         method: "POST",
         body: formData,
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
         setIsSubmitted(true);
         setImages([]); // Clear images after submission
         form.reset(); // Reset form fields
         toast.success("Anfrage erfolgreich gesendet! Wir melden uns zeitnah bei Ihnen.");
       } else {
-        const errorText = await response.text();
-        console.error("Form submission failed:", response.status, response.statusText, errorText);
-        throw new Error(`Netlify returned ${response.status}: ${response.statusText}`);
+        throw new Error(data.message || "Server Error");
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -95,13 +100,13 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-secondary/30">
+    <section id="kontakt" className="section-padding bg-secondary/30">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
@@ -144,17 +149,8 @@ const ContactSection = () => {
                 <form
                   onSubmit={handleSubmit}
                   className="bg-card rounded-xl p-6 md:p-8 border border-border shadow-card"
-                  name="contact"
-                  data-netlify="true"
                   encType="multipart/form-data"
                 >
-                  <input type="hidden" name="form-name" value="contact" />
-                  <input type="hidden" name="recipient-email" value="azizafif933@gmail.com" />
-                  <p className="hidden">
-                    <label>
-                      Don't fill this out if you're human: <input name="bot-field" />
-                    </label>
-                  </p>
                   <div className="grid sm:grid-cols-2 gap-4 mb-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -166,6 +162,8 @@ const ContactSection = () => {
                         placeholder="Ihr Name"
                         required
                         className="bg-background"
+                        onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('Bitte geben Sie Ihren Namen ein.')}
+                        onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                       />
                     </div>
                     <div>
@@ -179,6 +177,8 @@ const ContactSection = () => {
                         placeholder="+49 ..."
                         required
                         className="bg-background"
+                        onInvalid={(e) => (e.target as HTMLInputElement).setCustomValidity('Bitte geben Sie Ihre Telefonnummer ein.')}
+                        onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                       />
                     </div>
                   </div>
@@ -194,6 +194,17 @@ const ContactSection = () => {
                       placeholder="ihre@email.de"
                       required
                       className="bg-background"
+                      onInvalid={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        if (target.validity.valueMissing) {
+                          target.setCustomValidity('Bitte füllen Sie dieses Feld aus.');
+                        } else if (target.validity.typeMismatch) {
+                          target.setCustomValidity('Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. max@muster.de).');
+                        } else {
+                          target.setCustomValidity('Eingabe ungültig.');
+                        }
+                      }}
+                      onInput={(e) => (e.target as HTMLInputElement).setCustomValidity('')}
                     />
                   </div>
 
@@ -304,14 +315,14 @@ const ContactSection = () => {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:pl-8"
           >
-            <div className="sticky top-32">
-              <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
+            <div className="sticky top-32 lg:pt-[230px]">
+              <h3 className="font-display text-2xl font-semibold text-foreground mb-8">
                 Direkt Kontakt aufnehmen
               </h3>
 

@@ -43,7 +43,7 @@ const SolutionSection = () => {
               bis zur<br />
               Wiederherstellung
             </h2>
-            
+
             <p className="text-muted-foreground text-lg mb-8">
               BauRestore steht für Fachexpertise und strukturiertes Projektmanagement. Wir
               analysieren, entwickeln, koordinieren und dokumentieren – damit Sie jederzeit den
@@ -70,7 +70,7 @@ const SolutionSection = () => {
             </ul>
 
             <Button variant="cta" className="group" asChild>
-              <a href="#services">
+              <a href="#leistungen">
                 Leistungen entdecken
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>

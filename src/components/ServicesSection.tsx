@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Search, Wind, Wrench, ClipboardList } from "lucide-react";
-import serviceAnalysis from "@/assets/1.jpg";
-import serviceDrying from "@/assets/2.jpg";
-import serviceConcept from "@/assets/3.jpg";
-import serviceManagement from "@/assets/4.jpg";
+import serviceAnalysis from "@/assets/service-analysis.jpg";
+import serviceDrying from "@/assets/service-drying.jpg";
+import serviceConcept from "@/assets/service-concept.jpg";
+import serviceManagement from "@/assets/service-management.jpg";
 
 const ServicesSection = () => {
   const services = [
@@ -38,7 +38,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-secondary/30">
+    <section id="leistungen" className="section-padding bg-background">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ const ServicesSection = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <service.icon className="w-6 h-6 text-primary" />

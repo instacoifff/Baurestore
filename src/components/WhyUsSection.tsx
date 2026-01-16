@@ -46,7 +46,8 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section id="why-us" className="section-padding bg-primary">
+    <section id="warum-wir" className="section-padding bg-primary relative overflow-hidden">
+      {/* Decorative Elements */}
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +63,7 @@ const WhyUsSection = () => {
             Das macht uns aus
           </h2>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
-            Wir verbinden technisches Know-how mit persönlicher Betreuung – 
+            Wir verbinden technisches Know-how mit persönlicher Betreuung –
             für Ergebnisse, auf die Sie sich verlassen können.
           </p>
         </motion.div>

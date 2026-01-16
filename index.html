@@ -16,21 +16,92 @@
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "BauRestore",
+          "url": "https://baurestore.de",
+          "description": "Ingenieurdienstleistungen für Bauschäden und Sanierungsmanagement",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://baurestore.de/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Home",
+              "description": "Ihr Experte für Wasserschäden & Bausanierung",
+              "url": "https://baurestore.de/#start"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Leistungen",
+              "description": "Präzise Leckortung, Bautrocknung & Komplettsanierung",
+              "url": "https://baurestore.de/#leistungen"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Ablauf",
+              "description": "Von der Schadenanalyse bis zur Schlüsselübergabe",
+              "url": "https://baurestore.de/#ablauf"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Partner",
+              "description": "Zuverlässiger Partner für Versicherungen & Hausverwaltungen",
+              "url": "https://baurestore.de/#partner"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Warum wir",
+              "description": "Ingenieurkompetenz, 24/7 Service & absolute Transparenz",
+              "url": "https://baurestore.de/#warum-wir"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Kontakt",
+              "description": "Soforthilfe & Kostenlose Erstberatung anfordern",
+              "url": "https://baurestore.de/#kontakt"
+            }
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "BauRestore",
+          "telephone": "+49 152 05280748",
+          "email": "info@baurestore.de",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Friedrich-Ebert-Straße 18A",
+            "addressLocality": "Ladenburg",
+            "postalCode": "68526",
+            "addressCountry": "DE"
+          },
+          "url": "https://baurestore.de"
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
 
-  <!-- Hidden form for Netlify detection -->
-  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-    <input type="text" name="name" />
-    <input type="tel" name="phone" />
-    <input type="email" name="email" />
-    <input type="text" name="damage-type" />
-    <textarea name="message"></textarea>
-    <input type="file" name="image-upload" multiple />
-    <input type="hidden" name="recipient-email" />
-  </form>
+
 
   <script type="module" src="/src/main.tsx"></script>
 </body>

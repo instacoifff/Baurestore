@@ -56,10 +56,15 @@ const ProblemSection = () => {
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 {problem.image ? (
-                  <img
-                    src={problem.image}
-                    alt={problem.title}
-                    className="w-6 h-6 text-primary"
+                  <div
+                    className="w-6 h-6 bg-primary"
+                    style={{
+                      maskImage: `url(${problem.image})`,
+                      WebkitMaskImage: `url(${problem.image})`,
+                      maskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      maskSize: 'contain'
+                    }}
                   />
                 ) : (
                   <problem.icon className="w-6 h-6 text-primary" />

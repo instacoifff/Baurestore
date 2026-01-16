@@ -21,7 +21,7 @@
     /* Primary - Deep Professional Blue (from brand) */
     --primary: 206 64% 30%;
     --primary-foreground: 0 0% 100%;
-    
+
     /* Background - Light blue tints */
     --background: 200 30% 97%;
     --foreground: 210 30% 15%;
@@ -72,7 +72,7 @@
     --shadow-md: 0 8px 24px -4px hsl(210 30% 15% / 0.1);
     --shadow-lg: 0 16px 48px -8px hsl(210 30% 15% / 0.12);
     --shadow-card: 0 4px 20px -4px hsl(206 64% 30% / 0.08);
-    
+
     /* Sidebar (keeping defaults) */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -87,7 +87,7 @@
   .dark {
     --primary: 206 64% 50%;
     --primary-foreground: 0 0% 100%;
-    
+
     --background: 210 30% 8%;
     --foreground: 200 20% 95%;
 
@@ -116,7 +116,7 @@
     --border: 210 20% 22%;
     --input: 210 20% 22%;
     --ring: 206 64% 50%;
-    
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -135,36 +135,34 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Araboto', sans-serif;
-    font-weight: 700;
+    @apply bg-background text-foreground font-sans antialiased font-semibold;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Araboto', sans-serif;
-    font-weight: 700;
-    @apply tracking-tight;
-  }
-
-  /* Keep Inter for small text */
-  .text-xs, .text-sm,
-  p.text-xs, p.text-sm,
-  span.text-xs, span.text-sm {
-    font-family: 'Inter', system-ui, sans-serif !important;
-    font-weight: 400 !important;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply tracking-tight font-bold;
   }
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-3 sm:px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-14 md:py-24;
   }
 
   .section-title {
